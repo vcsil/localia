@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-09-26T22:07:17.170325-03:00",
+  "successful_runs": 54,
+  "planned_runs": 54,
+  "by_gpu": [
+    {
+      "gpu_layers": 0,
+      "gpu_ratio": 0.0,
+      "n": 9,
+      "tokens_per_second_mean": 4.289384658876948,
+      "tokens_per_second_median": 4.467537632334818,
+      "tokens_per_second_stdev": 0.25234406079133925,
+      "ttft_mean_seconds": 4.202559444444445,
+      "ttft_median_seconds": 3.776786,
+      "ttft_stdev_seconds": 0.703592831647877,
+      "wall_time_mean_seconds": 67.10826682219178,
+      "output_tokens_mean": 269.6666666666667,
+      "throughput_vs_gpu0_percent": 0.0,
+      "ttft_vs_gpu0_percent": 0.0
+    },
+    {
+      "gpu_layers": 4,
+      "gpu_ratio": 0.125,
+      "n": 9,
+      "tokens_per_second_mean": 2.88154273522316,
+      "tokens_per_second_median": 2.9218147851661085,
+      "tokens_per_second_stdev": 0.07448745640576403,
+      "ttft_mean_seconds": 4.317624111111111,
+      "ttft_median_seconds": 4.468222,
+      "ttft_stdev_seconds": 0.4831476905798177,
+      "wall_time_mean_seconds": 96.39309035555925,
+      "output_tokens_mean": 265.6666666666667,
+      "throughput_vs_gpu0_percent": -32.82153585224018,
+      "ttft_vs_gpu0_percent": 2.737966427072802
+    },
+    {
+      "gpu_layers": 8,
+      "gpu_ratio": 0.25,
+      "n": 9,
+      "tokens_per_second_mean": 2.2637892519080305,
+      "tokens_per_second_median": 2.2570929446158137,
+      "tokens_per_second_stdev": 0.015454134481933751,
+      "ttft_mean_seconds": 4.120207555555556,
+      "ttft_median_seconds": 3.862239,
+      "ttft_stdev_seconds": 0.41483840820255263,
+      "wall_time_mean_seconds": 121.32685213335532,
+      "output_tokens_mean": 266.0,
+      "throughput_vs_gpu0_percent": -47.22344970337217,
+      "ttft_vs_gpu0_percent": -1.9595651168659467
+    },
+    {
+      "gpu_layers": 16,
+      "gpu_ratio": 0.5,
+      "n": 9,
+      "tokens_per_second_mean": 1.4954435365816123,
+      "tokens_per_second_median": 1.4969791459827118,
+      "tokens_per_second_stdev": 0.006838698595106627,
+      "ttft_mean_seconds": 4.307038777777778,
+      "ttft_median_seconds": 4.212882,
+      "ttft_stdev_seconds": 0.2132063093465917,
+      "wall_time_mean_seconds": 180.3378569777641,
+      "output_tokens_mean": 264.0,
+      "throughput_vs_gpu0_percent": -65.13617557038702,
+      "ttft_vs_gpu0_percent": 2.4860881735164764
+    },
+    {
+      "gpu_layers": 24,
+      "gpu_ratio": 0.75,
+      "n": 9,
+      "tokens_per_second_mean": 1.1545310655333914,
+      "tokens_per_second_median": 1.1547918988012233,
+      "tokens_per_second_stdev": 0.011513479992459115,
+      "ttft_mean_seconds": 4.324274222222223,
+      "ttft_median_seconds": 4.362434,
+      "ttft_stdev_seconds": 0.16866738458411107,
+      "wall_time_mean_seconds": 236.34999094441687,
+      "output_tokens_mean": 268.6666666666667,
+      "throughput_vs_gpu0_percent": -73.08399322163677,
+      "ttft_vs_gpu0_percent": 2.8962059760672343
+    },
+    {
+      "gpu_layers": 32,
+      "gpu_ratio": 1.0,
+      "n": 9,
+      "tokens_per_second_mean": 0.9202047932168259,
+      "tokens_per_second_median": 0.9202314515952609,
+      "tokens_per_second_stdev": 0.002057211495660172,
+      "ttft_mean_seconds": 4.3381812222222225,
+      "ttft_median_seconds": 4.300069000000001,
+      "ttft_stdev_seconds": 0.12870759407352186,
+      "wall_time_mean_seconds": 303.66452522221437,
+      "output_tokens_mean": 276.3333333333333,
+      "throughput_vs_gpu0_percent": -78.54692767382268,
+      "ttft_vs_gpu0_percent": 3.2271233654306064
+    }
+  ],
+  "highest_mean_throughput": {
+    "gpu_layers": 0,
+    "tokens_per_second_mean": 4.289384658876948
+  },
+  "lowest_mean_ttft": {
+    "gpu_layers": 8,
+    "ttft_mean_seconds": 4.120207555555556
+  }
+}
