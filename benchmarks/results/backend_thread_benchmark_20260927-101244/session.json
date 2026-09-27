@@ -1,0 +1,418 @@
+{
+  "session_version": 1,
+  "created_at": "2026-09-27T10:12:44.232529-03:00",
+  "updated_at": "2026-09-27T11:28:31.875763-03:00",
+  "completed": true,
+  "completed_at": "2026-09-27T11:28:31.875735-03:00",
+  "seed": 20260927,
+  "model_key": "qwen/qwen3.5-9b",
+  "expected_variant": "qwen/qwen3.5-9b@q4_k_m",
+  "runtimes": {
+    "cpu": "llama.cpp-win-x86_64-avx2@2.46.0",
+    "vulkan": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0"
+  },
+  "thread_counts": [
+    4,
+    6,
+    8
+  ],
+  "configuration": {
+    "context_length": 4096,
+    "gpu_offload": "off",
+    "temperature": 0.0,
+    "max_output_tokens": 384,
+    "rounds": 3,
+    "thermal_sample_interval_seconds": 1.0,
+    "target_start_temp_c": 70.0,
+    "expected_loaded_config": {
+      "context_length": 4096,
+      "eval_batch_size": 2048,
+      "physical_batch_size": 512,
+      "parallel": 1,
+      "flash_attention": false,
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false,
+      "offload_kv_cache_to_gpu": false
+    }
+  },
+  "prompts": {
+    "A": "Explique em aproximadamente 150 palavras o que é uma API REST e cite suas principais características.",
+    "B": "Explique em aproximadamente 150 palavras como funciona a fotossíntese e qual é sua importância para os ecossistemas.",
+    "C": "Explique em aproximadamente 150 palavras quais foram as principais causas da Revolução Francesa."
+  },
+  "warmup_prompt": "Em no máximo 50 palavras, explique por que a água congela quando sua temperatura cai suficientemente.",
+  "schedule": [
+    {
+      "block_id": "R1-VULKAN-T8",
+      "round": 1,
+      "block_index": 1,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "C",
+        "B",
+        "A"
+      ],
+      "run_ids": [
+        "R1-VULKAN-T8-PC",
+        "R1-VULKAN-T8-PB",
+        "R1-VULKAN-T8-PA"
+      ]
+    },
+    {
+      "block_id": "R1-VULKAN-T6",
+      "round": 1,
+      "block_index": 2,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "R1-VULKAN-T6-PA",
+        "R1-VULKAN-T6-PC",
+        "R1-VULKAN-T6-PB"
+      ]
+    },
+    {
+      "block_id": "R1-CPU-T4",
+      "round": 1,
+      "block_index": 3,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "run_ids": [
+        "R1-CPU-T4-PB",
+        "R1-CPU-T4-PA",
+        "R1-CPU-T4-PC"
+      ]
+    },
+    {
+      "block_id": "R1-CPU-T8",
+      "round": 1,
+      "block_index": 4,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "C",
+        "A",
+        "B"
+      ],
+      "run_ids": [
+        "R1-CPU-T8-PC",
+        "R1-CPU-T8-PA",
+        "R1-CPU-T8-PB"
+      ]
+    },
+    {
+      "block_id": "R1-VULKAN-T4",
+      "round": 1,
+      "block_index": 5,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "C",
+        "B",
+        "A"
+      ],
+      "run_ids": [
+        "R1-VULKAN-T4-PC",
+        "R1-VULKAN-T4-PB",
+        "R1-VULKAN-T4-PA"
+      ]
+    },
+    {
+      "block_id": "R1-CPU-T6",
+      "round": 1,
+      "block_index": 6,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "R1-CPU-T6-PA",
+        "R1-CPU-T6-PC",
+        "R1-CPU-T6-PB"
+      ]
+    },
+    {
+      "block_id": "R2-VULKAN-T6",
+      "round": 2,
+      "block_index": 1,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "run_ids": [
+        "R2-VULKAN-T6-PB",
+        "R2-VULKAN-T6-PA",
+        "R2-VULKAN-T6-PC"
+      ]
+    },
+    {
+      "block_id": "R2-VULKAN-T8",
+      "round": 2,
+      "block_index": 2,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "run_ids": [
+        "R2-VULKAN-T8-PB",
+        "R2-VULKAN-T8-PA",
+        "R2-VULKAN-T8-PC"
+      ]
+    },
+    {
+      "block_id": "R2-VULKAN-T4",
+      "round": 2,
+      "block_index": 3,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "run_ids": [
+        "R2-VULKAN-T4-PB",
+        "R2-VULKAN-T4-PA",
+        "R2-VULKAN-T4-PC"
+      ]
+    },
+    {
+      "block_id": "R2-CPU-T8",
+      "round": 2,
+      "block_index": 4,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "C",
+        "A",
+        "B"
+      ],
+      "run_ids": [
+        "R2-CPU-T8-PC",
+        "R2-CPU-T8-PA",
+        "R2-CPU-T8-PB"
+      ]
+    },
+    {
+      "block_id": "R2-CPU-T6",
+      "round": 2,
+      "block_index": 5,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "run_ids": [
+        "R2-CPU-T6-PA",
+        "R2-CPU-T6-PB",
+        "R2-CPU-T6-PC"
+      ]
+    },
+    {
+      "block_id": "R2-CPU-T4",
+      "round": 2,
+      "block_index": 6,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "C",
+        "B",
+        "A"
+      ],
+      "run_ids": [
+        "R2-CPU-T4-PC",
+        "R2-CPU-T4-PB",
+        "R2-CPU-T4-PA"
+      ]
+    },
+    {
+      "block_id": "R3-VULKAN-T4",
+      "round": 3,
+      "block_index": 1,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "R3-VULKAN-T4-PB",
+        "R3-VULKAN-T4-PC",
+        "R3-VULKAN-T4-PA"
+      ]
+    },
+    {
+      "block_id": "R3-CPU-T6",
+      "round": 3,
+      "block_index": 2,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "R3-CPU-T6-PA",
+        "R3-CPU-T6-PC",
+        "R3-CPU-T6-PB"
+      ]
+    },
+    {
+      "block_id": "R3-CPU-T8",
+      "round": 3,
+      "block_index": 3,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "R3-CPU-T8-PB",
+        "R3-CPU-T8-PC",
+        "R3-CPU-T8-PA"
+      ]
+    },
+    {
+      "block_id": "R3-VULKAN-T6",
+      "round": 3,
+      "block_index": 4,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 6,
+      "prompt_order": [
+        "C",
+        "A",
+        "B"
+      ],
+      "run_ids": [
+        "R3-VULKAN-T6-PC",
+        "R3-VULKAN-T6-PA",
+        "R3-VULKAN-T6-PB"
+      ]
+    },
+    {
+      "block_id": "R3-VULKAN-T8",
+      "round": 3,
+      "block_index": 5,
+      "backend": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "threads": 8,
+      "prompt_order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "run_ids": [
+        "R3-VULKAN-T8-PB",
+        "R3-VULKAN-T8-PA",
+        "R3-VULKAN-T8-PC"
+      ]
+    },
+    {
+      "block_id": "R3-CPU-T4",
+      "round": 3,
+      "block_index": 6,
+      "backend": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "threads": 4,
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "R3-CPU-T4-PB",
+        "R3-CPU-T4-PC",
+        "R3-CPU-T4-PA"
+      ]
+    }
+  ],
+  "planned_measured_runs": 54,
+  "environment": {
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "lms_version": "CLI commit: 69d945a",
+    "git_commit": "ccaec9c388f433cee96695d912029ce83eebf269"
+  },
+  "verified_thread_pool_size": 8,
+  "model_inventory_at_start": {
+    "type": "llm",
+    "modelKey": "qwen/qwen3.5-9b",
+    "format": "gguf",
+    "displayName": "Qwen3.5 9B",
+    "publisher": "qwen",
+    "path": "qwen/qwen3.5-9b",
+    "sizeBytes": 6548927711,
+    "indexedModelIdentifier": "qwen/qwen3.5-9b",
+    "deviceIdentifier": null,
+    "paramsString": "9B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits": 4
+    },
+    "variants": [
+      "qwen/qwen3.5-9b@q4_k_m",
+      "qwen/qwen3.5-9b@q6_k"
+    ],
+    "selectedVariant": "qwen/qwen3.5-9b@q4_k_m",
+    "vision": true,
+    "trainedForToolUse": true,
+    "maxContextLength": 262144
+  },
+  "runtime_ls_at_start": "LLM ENGINE                                             SELECTED    MODEL FORMAT\nexecutorch-asr-win-x86_64-nvidia-cuda128-avx2@0.0.8                    PTE     \nllama.cpp-win-x86_64-avx2@2.46.0                                       GGUF    \nllama.cpp-win-x86_64-avx2@2.43.0                                       GGUF    \nllama.cpp-win-x86_64-avx2@2.41.0                                       GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.44.0                           GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.43.0                           GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.41.0                           GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.46.0                   ✓            GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.44.0                                GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.43.0                                GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.41.0                                GGUF    \n",
+  "hardware_probe_at_start": {
+    "timestamp": "2026-09-27T10:12:44.230842-03:00",
+    "monotonic": 712941.6947554,
+    "cpu_package_temp_c": 63.0,
+    "core_max_temp_c": 64.0,
+    "cpu_package_power_w": 16.0,
+    "cpu_total_load_percent": 10.2,
+    "p_core_clock_mean_mhz": 4469.2,
+    "e_core_clock_mean_mhz": 2347.5875
+  },
+  "lmstudio_python_version": "1.5.0",
+  "successful_runs": 54,
+  "remaining_runs": 0
+}

@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-09-27T08:35:20.577840-03:00",
+  "successful_runs": 18,
+  "planned_runs": 18,
+  "by_runtime": [
+    {
+      "runtime": "cpu",
+      "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+      "n": 9,
+      "tokens_per_second_mean": 6.638066127735022,
+      "tokens_per_second_median": 6.591534928032972,
+      "tokens_per_second_stdev": 0.11667600276885402,
+      "ttft_mean_seconds": 1.5134516666666666,
+      "ttft_median_seconds": 1.45268,
+      "ttft_stdev_seconds": 0.13135738482571124,
+      "wall_time_mean_seconds": 39.97344324444162,
+      "load_time_mean_seconds": 9.784901833355738
+    },
+    {
+      "runtime": "vulkan",
+      "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+      "n": 9,
+      "tokens_per_second_mean": 6.016900535672712,
+      "tokens_per_second_median": 6.017619864491407,
+      "tokens_per_second_stdev": 0.14599425583091366,
+      "ttft_mean_seconds": 2.4820044444444447,
+      "ttft_median_seconds": 2.0593339999999998,
+      "ttft_stdev_seconds": 0.6542209877279831,
+      "wall_time_mean_seconds": 47.19009776666967,
+      "load_time_mean_seconds": 8.183837533346377
+    }
+  ],
+  "comparison": {
+    "cpu_vs_vulkan_throughput_percent": 10.323680579055171,
+    "cpu_vs_vulkan_ttft_percent": -39.023007390084366
+  }
+}

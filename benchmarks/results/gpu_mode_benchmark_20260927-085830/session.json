@@ -1,0 +1,183 @@
+{
+  "session_version": 1,
+  "created_at": "2026-09-27T08:58:30.470938-03:00",
+  "updated_at": "2026-09-27T09:19:14.748959-03:00",
+  "completed": true,
+  "completed_at": "2026-09-27T09:19:14.748946-03:00",
+  "seed": 20260927,
+  "model_key": "qwen/qwen3.5-9b",
+  "expected_variant": "qwen/qwen3.5-9b@q4_k_m",
+  "runtime": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0",
+  "gpu_modes": {
+    "off": "off",
+    "zero": "0.0"
+  },
+  "configuration": {
+    "context_length": 4096,
+    "cpu_threads_target_metadata_only": 8,
+    "temperature": 0.0,
+    "max_output_tokens": 384,
+    "reasoning": "off",
+    "rounds": 3,
+    "expected_loaded_config": {
+      "context_length": 4096,
+      "eval_batch_size": 2048,
+      "physical_batch_size": 512,
+      "parallel": 1,
+      "flash_attention": false,
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false,
+      "offload_kv_cache_to_gpu": false
+    },
+    "target_start_temp_c": 70.0,
+    "thermal_wait_max_seconds": 120
+  },
+  "prompts": {
+    "A": "Explique em aproximadamente 150 palavras o que é uma API REST e cite suas principais características.",
+    "B": "Explique em aproximadamente 150 palavras como funciona a fotossíntese e qual é sua importância para os ecossistemas.",
+    "C": "Explique em aproximadamente 150 palavras quais foram as principais causas da Revolução Francesa."
+  },
+  "warmup_prompt": "Em no máximo 50 palavras, explique por que a água congela quando sua temperatura cai suficientemente.",
+  "schedule": [
+    {
+      "block_id": "R1-GPU-ZERO",
+      "round": 1,
+      "block_index": 1,
+      "mode": "zero",
+      "gpu_argument": "0.0",
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "R1-GPU-ZERO-PA",
+        "R1-GPU-ZERO-PC",
+        "R1-GPU-ZERO-PB"
+      ]
+    },
+    {
+      "block_id": "R1-GPU-OFF",
+      "round": 1,
+      "block_index": 2,
+      "mode": "off",
+      "gpu_argument": "off",
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "R1-GPU-OFF-PB",
+        "R1-GPU-OFF-PC",
+        "R1-GPU-OFF-PA"
+      ]
+    },
+    {
+      "block_id": "R2-GPU-ZERO",
+      "round": 2,
+      "block_index": 1,
+      "mode": "zero",
+      "gpu_argument": "0.0",
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "R2-GPU-ZERO-PA",
+        "R2-GPU-ZERO-PC",
+        "R2-GPU-ZERO-PB"
+      ]
+    },
+    {
+      "block_id": "R2-GPU-OFF",
+      "round": 2,
+      "block_index": 2,
+      "mode": "off",
+      "gpu_argument": "off",
+      "prompt_order": [
+        "C",
+        "A",
+        "B"
+      ],
+      "run_ids": [
+        "R2-GPU-OFF-PC",
+        "R2-GPU-OFF-PA",
+        "R2-GPU-OFF-PB"
+      ]
+    },
+    {
+      "block_id": "R3-GPU-OFF",
+      "round": 3,
+      "block_index": 1,
+      "mode": "off",
+      "gpu_argument": "off",
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "R3-GPU-OFF-PB",
+        "R3-GPU-OFF-PC",
+        "R3-GPU-OFF-PA"
+      ]
+    },
+    {
+      "block_id": "R3-GPU-ZERO",
+      "round": 3,
+      "block_index": 2,
+      "mode": "zero",
+      "gpu_argument": "0.0",
+      "prompt_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "run_ids": [
+        "R3-GPU-ZERO-PA",
+        "R3-GPU-ZERO-PB",
+        "R3-GPU-ZERO-PC"
+      ]
+    }
+  ],
+  "planned_measured_runs": 18,
+  "environment": {
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "lms_version": "CLI commit: 69d945a",
+    "git_commit": "ccaec9c388f433cee96695d912029ce83eebf269",
+    "powershell": "powershell.exe"
+  },
+  "model_inventory_at_start": {
+    "type": "llm",
+    "modelKey": "qwen/qwen3.5-9b",
+    "format": "gguf",
+    "displayName": "Qwen3.5 9B",
+    "publisher": "qwen",
+    "path": "qwen/qwen3.5-9b",
+    "sizeBytes": 6548927711,
+    "indexedModelIdentifier": "qwen/qwen3.5-9b",
+    "deviceIdentifier": null,
+    "paramsString": "9B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits": 4
+    },
+    "variants": [
+      "qwen/qwen3.5-9b@q4_k_m",
+      "qwen/qwen3.5-9b@q6_k"
+    ],
+    "selectedVariant": "qwen/qwen3.5-9b@q4_k_m",
+    "vision": true,
+    "trainedForToolUse": true,
+    "maxContextLength": 262144
+  },
+  "runtime_ls_at_start": "LLM ENGINE                                             SELECTED    MODEL FORMAT\nexecutorch-asr-win-x86_64-nvidia-cuda128-avx2@0.0.8                    PTE     \nllama.cpp-win-x86_64-avx2@2.46.0                                       GGUF    \nllama.cpp-win-x86_64-avx2@2.43.0                                       GGUF    \nllama.cpp-win-x86_64-avx2@2.41.0                                       GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.44.0                           GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.43.0                           GGUF    \nllama.cpp-win-x86_64-nvidia-cuda-avx2@2.41.0                           GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.46.0                   ✓            GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.44.0                                GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.43.0                                GGUF    \nllama.cpp-win-x86_64-vulkan-avx2@2.41.0                                GGUF    \n",
+  "temperature_probe_at_start": null,
+  "successful_runs": 18,
+  "remaining_runs": 0
+}

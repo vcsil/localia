@@ -1,0 +1,178 @@
+{
+  "started_at": "2026-09-27T08:37:12.286259-03:00",
+  "benchmark": "gpu_smoke",
+  "script_version": "2.0",
+  "model_key": "qwen/qwen3.5-9b",
+  "expected_variant": "qwen/qwen3.5-9b@q4_k_m",
+  "configuration_requested": {
+    "context_length": 4096,
+    "gpu_ratio": 0.125,
+    "gpu_layers_expected": 4,
+    "total_model_layers": 32,
+    "cpu_threads_target_metadata_only": 8,
+    "expected_eval_batch_size": 2048,
+    "expected_parallel": 1,
+    "expected_flash_attention": false,
+    "expected_offload_kv_cache_to_gpu": false,
+    "reasoning": "off",
+    "temperature": 0.0,
+    "max_output_tokens": 320
+  },
+  "model_inventory": {
+    "type": "llm",
+    "modelKey": "qwen/qwen3.5-9b",
+    "format": "gguf",
+    "displayName": "Qwen3.5 9B",
+    "publisher": "qwen",
+    "path": "qwen/qwen3.5-9b",
+    "sizeBytes": 6548927711,
+    "indexedModelIdentifier": "qwen/qwen3.5-9b",
+    "deviceIdentifier": null,
+    "paramsString": "9B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits": 4
+    },
+    "variants": [
+      "qwen/qwen3.5-9b@q4_k_m",
+      "qwen/qwen3.5-9b@q6_k"
+    ],
+    "selectedVariant": "qwen/qwen3.5-9b@q4_k_m",
+    "vision": true,
+    "trainedForToolUse": true,
+    "maxContextLength": 262144
+  },
+  "load_wall_time_seconds": 7.007036800030619,
+  "lms_load_stdout": "\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 100% ⠋\n\u001b[K\u001b[?25h",
+  "lms_load_stderr": "Model loaded successfully in 6.70s.\n(6.10 GiB)\nTo use the model in the API/SDK, use the identifier \"localia-bench\".",
+  "lms_ps_after_load": "IDENTIFIER       MODEL              STATUS    SIZE       CONTEXT    PARALLEL    DEVICE    TTL\nlocalia-bench    qwen/qwen3.5-9b    IDLE      6.55 GB    4096       1           Local",
+  "loaded_model_from_api": {
+    "type": "llm",
+    "publisher": "qwen",
+    "key": "qwen/qwen3.5-9b",
+    "display_name": "Qwen3.5 9B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits_per_weight": 4
+    },
+    "size_bytes": 6548927711,
+    "params_string": "9B",
+    "loaded_instances": [
+      {
+        "id": "localia-bench",
+        "config": {
+          "context_length": 4096,
+          "eval_batch_size": 2048,
+          "physical_batch_size": 512,
+          "parallel": 1,
+          "flash_attention": false,
+          "context_checkpoints": 32,
+          "reasoning_budget_message": "",
+          "speculative_draft_mtp": false,
+          "speculative_draft_simple": false,
+          "speculative_draft_model": "",
+          "speculative_draft_max_tokens": 3,
+          "speculative_draft_min_tokens": 0,
+          "speculative_draft_min_continue_probability": 0,
+          "offload_kv_cache_to_gpu": false
+        }
+      }
+    ],
+    "max_context_length": 262144,
+    "format": "gguf",
+    "capabilities": {
+      "vision": true,
+      "trained_for_tool_use": true,
+      "reasoning": {
+        "allowed_options": [
+          "off",
+          "on"
+        ],
+        "default": "on"
+      }
+    },
+    "description": null,
+    "variants": [
+      "qwen/qwen3.5-9b@q4_k_m",
+      "qwen/qwen3.5-9b@q6_k"
+    ],
+    "selected_variant": "qwen/qwen3.5-9b@q4_k_m"
+  },
+  "loaded_instance_from_api": {
+    "id": "localia-bench",
+    "config": {
+      "context_length": 4096,
+      "eval_batch_size": 2048,
+      "physical_batch_size": 512,
+      "parallel": 1,
+      "flash_attention": false,
+      "context_checkpoints": 32,
+      "reasoning_budget_message": "",
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false,
+      "speculative_draft_model": "",
+      "speculative_draft_max_tokens": 3,
+      "speculative_draft_min_tokens": 0,
+      "speculative_draft_min_continue_probability": 0,
+      "offload_kv_cache_to_gpu": false
+    }
+  },
+  "loaded_config": {
+    "context_length": 4096,
+    "eval_batch_size": 2048,
+    "physical_batch_size": 512,
+    "parallel": 1,
+    "flash_attention": false,
+    "context_checkpoints": 32,
+    "reasoning_budget_message": "",
+    "speculative_draft_mtp": false,
+    "speculative_draft_simple": false,
+    "speculative_draft_model": "",
+    "speculative_draft_max_tokens": 3,
+    "speculative_draft_min_tokens": 0,
+    "speculative_draft_min_continue_probability": 0,
+    "offload_kv_cache_to_gpu": false
+  },
+  "config_audit_issues": [],
+  "config_audit_passed": true,
+  "prompt_id": "A",
+  "prompt": "Explique em aproximadamente 150 palavras o que é uma API REST e cite suas principais características.",
+  "request_payload": {
+    "model": "localia-bench",
+    "input": "Explique em aproximadamente 150 palavras o que é uma API REST e cite suas principais características.",
+    "temperature": 0.0,
+    "max_output_tokens": 320,
+    "reasoning": "off",
+    "context_length": 4096,
+    "store": false,
+    "stream": false
+  },
+  "response": {
+    "model_instance_id": "localia-bench",
+    "output": [
+      {
+        "type": "message",
+        "content": "Uma API REST (Representational State Transfer) é um estilo de arquitetura para serviços web que utiliza protocolos padrão da internet, como HTTP, para permitir a comunicação entre diferentes sistemas de software. Ela funciona permitindo que aplicações clientes acessem recursos em servidores através de URLs, tratando os dados como \"recursos\" independentes.\n\nAs principais características que definem uma API REST incluem:\n1. **Estilo Arquitetural Cliente-Servidor:** Separa claramente quem solicita os dados (cliente) de quem os fornece (servidor).\n2. **Interface Uniforme:** Utiliza métodos HTTP padronizados, onde GET busca recursos, POST cria novos, PUT atualiza e DELETE remove informações.\n3. **Estado Semântico em Cache:** Permite que respostas sejam armazenadas temporalmente para melhorar o desempenho.\n4. **Sistema de Camadas:** O cliente não precisa saber se está interagindo diretamente com o servidor ou com um intermediário (como um balanceador de carga).\n5. **Código na Demanda:** O servidor pode fornecer scripts executáveis para clientes que suportam a linguagem específica.\n6. **Formato de Representação Semântica:** Os recursos são geralmente representados em formatos legíveis por máquina, como JSON ou XML.\n\nEssas propriedades tornam as APIs REST escaláveis, simples e amplamente adotadas no desenvolvimento moderno."
+      }
+    ],
+    "stats": {
+      "input_tokens": 34,
+      "total_output_tokens": 283,
+      "reasoning_output_tokens": 0,
+      "tokens_per_second": 3.864665763833236,
+      "time_to_first_token_seconds": 2.096674
+    }
+  },
+  "stats": {
+    "input_tokens": 34,
+    "total_output_tokens": 283,
+    "reasoning_output_tokens": 0,
+    "tokens_per_second": 3.864665763833236,
+    "time_to_first_token_seconds": 2.096674
+  },
+  "inference_wall_time_seconds": 75.11092670005746,
+  "reasoning_off_verified": true,
+  "ended_at": "2026-09-27T08:38:35.479859-03:00"
+}
