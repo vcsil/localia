@@ -1,0 +1,1 @@
+{"timestamp": "2026-09-27T16:30:19.470002-03:00", "phase": "block", "message": "'changed_occurrences'", "run_id": null, "block_id": "R1-VULKAN-T4", "round": 1, "backend": "vulkan", "threads": 4, "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0"}

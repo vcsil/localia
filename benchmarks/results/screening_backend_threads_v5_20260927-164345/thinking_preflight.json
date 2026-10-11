@@ -1,0 +1,111 @@
+{
+  "timestamp": "2026-09-27T16:44:12.007919-03:00",
+  "passed": true,
+  "backend": "cpu",
+  "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+  "selected_runtime_line": "llama.cpp-win-x86_64-avx2@2.46.0                          ✓            GGUF",
+  "runtime_switch_seconds": 0.2901980000315234,
+  "threads": 2,
+  "config_edit": {
+    "threadpool": {
+      "changed_occurrences": 1,
+      "before": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 2,
+          "style": "field-entry"
+        }
+      ],
+      "after": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 2,
+          "style": "field-entry"
+        }
+      ]
+    },
+    "reasoning_enable_thinking": {
+      "action": "added",
+      "before": [],
+      "after_value": false,
+      "key": "llm.prediction.reasoning.enableThinking",
+      "verified_after": [
+        {
+          "index": 0,
+          "key": "llm.prediction.reasoning.enableThinking",
+          "value": false
+        }
+      ]
+    }
+  },
+  "load_wall_time_seconds": 11.141007199999876,
+  "load_log_parsed": {
+    "log_available": true,
+    "threadpool_n_threads": 2,
+    "http_server_threads": 15,
+    "n_ctx": 4096,
+    "n_batch": 2048,
+    "n_ubatch": 512,
+    "flash_attn": "disabled",
+    "offloaded_layers": null,
+    "total_layers": null
+  },
+  "model_process": {
+    "pid": 19856,
+    "name": "llama-server.exe",
+    "rss_bytes": 9753849856,
+    "create_time": 1790538235.7266636,
+    "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 57108 --api-key Iht1KhWdC4acKrGrxV2NMqXhgHso-Dtp_sAjFZJ773g --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-DKlxBf\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 2 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+    "selection_score": 1790.8398056030273,
+    "candidate_count": 1,
+    "all_candidates": [
+      {
+        "score": 1790.8398056030273,
+        "pid": 19856,
+        "name": "llama-server.exe",
+        "rss_bytes": 9753849856,
+        "create_time": 1790538235.7266636,
+        "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 57108 --api-key Iht1KhWdC4acKrGrxV2NMqXhgHso-Dtp_sAjFZJ773g --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-DKlxBf\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 2 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+        "selection_score": 1790.8398056030273,
+        "candidate_count": 1
+      }
+    ]
+  },
+  "process_cli_audit": {
+    "threads": 2,
+    "ctx_size_4096": true,
+    "n_gpu_layers_0": true,
+    "batch_size_2048": true,
+    "ubatch_size_512": true,
+    "parallel_1": true,
+    "flash_attn_off": true,
+    "no_kv_offload": true
+  },
+  "prediction_config": {
+    "maxTokens": 96,
+    "temperature": 0.0,
+    "rawTools": {
+      "type": "none"
+    },
+    "topKSampling": 20.0,
+    "topPSampling": 0.95,
+    "cpuThreads": 2,
+    "promptTemplate": {
+      "type": "jinja",
+      "stopStrings": [],
+      "jinjaPromptTemplate": {
+        "template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is defined %}\n                    {%- for args_name, args_value in tool_call.arguments|items %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson if args_value is mapping or (args_value is iterable and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- else %}\n        {{- '<think>\\n' }}\n    {%- endif %}\n{%- endif %}"
+      }
+    }
+  },
+  "echoed_cpu_threads": 2,
+  "content": "OK",
+  "reasoning_content": null,
+  "thinking_problems": [],
+  "stop_reason": "eosFound",
+  "predicted_tokens_count": 2,
+  "wall_time_seconds": 1.9678953000111505,
+  "preflight_max_tokens": 96,
+  "lms_stdout": "\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 63% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 100% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 100% ⠼\n\u001b[K\u001b[?25h",
+  "lms_stderr": "Model loaded successfully in 10.83s.\n(6.10 GiB)\nTo use the model in the API/SDK, use the identifier \"localia-screening-v5\"."
+}

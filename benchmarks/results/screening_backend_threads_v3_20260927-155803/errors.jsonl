@@ -1,0 +1,1 @@
+{"timestamp": "2026-09-27T16:11:36.729917-03:00", "phase": "block", "message": "THINKING NÃO FOI DESATIVADO.\nmarcador detectado: thinking process:\nmarcador detectado: __lm_studio_internal_lsep_synthetic_reasoning", "run_id": null, "block_id": "R1-VULKAN-T4", "round": 1, "backend": "vulkan", "threads": 4, "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0"}

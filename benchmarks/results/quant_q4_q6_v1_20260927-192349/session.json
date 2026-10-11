@@ -1,0 +1,226 @@
+{
+  "session_version": 1,
+  "created_at": "2026-09-27T19:23:49.378743-03:00",
+  "updated_at": "2026-09-27T19:28:59.907895-03:00",
+  "completed": false,
+  "completed_at": null,
+  "seed": 20260927,
+  "model_key": "qwen/qwen3.5-9b",
+  "runtime": "llama.cpp-win-x86_64-avx2@2.46.0",
+  "threads": 8,
+  "context_length": 4096,
+  "temperature": 0.0,
+  "thinking": "lmstudio_native_enableThinking_false",
+  "max_tokens_performance": null,
+  "variants": {
+    "q4_k_m": {
+      "type": "llm",
+      "modelKey": "qwen/qwen3.5-9b@q4_k_m",
+      "format": "gguf",
+      "displayName": "Qwen3.5 9B",
+      "publisher": "qwen",
+      "path": "qwen/qwen3.5-9b",
+      "sizeBytes": 6548927711,
+      "indexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf",
+      "deviceIdentifier": null,
+      "paramsString": "9B",
+      "architecture": "qwen35",
+      "quantization": {
+        "name": "Q4_K_M",
+        "bits": 4
+      },
+      "vision": true,
+      "trainedForToolUse": true,
+      "maxContextLength": 262144
+    },
+    "q6_k": {
+      "type": "llm",
+      "modelKey": "qwen/qwen3.5-9b@q6_k",
+      "format": "gguf",
+      "displayName": "Qwen3.5 9B",
+      "publisher": "qwen",
+      "path": "qwen/qwen3.5-9b",
+      "sizeBytes": 8281142495,
+      "indexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q6_K.gguf",
+      "deviceIdentifier": null,
+      "paramsString": "9B",
+      "architecture": "qwen35",
+      "quantization": {
+        "name": "Q6_K",
+        "bits": 6
+      },
+      "vision": true,
+      "trainedForToolUse": true,
+      "maxContextLength": 262144
+    }
+  },
+  "performance_schedule": [
+    {
+      "block_id": "PERF-R1-Q6_K",
+      "round": 1,
+      "block_index": 1,
+      "quant_key": "q6_k",
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "PERF-R1-Q6_K-PA",
+        "PERF-R1-Q6_K-PC",
+        "PERF-R1-Q6_K-PB"
+      ]
+    },
+    {
+      "block_id": "PERF-R1-Q4_K_M",
+      "round": 1,
+      "block_index": 2,
+      "quant_key": "q4_k_m",
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "PERF-R1-Q4_K_M-PB",
+        "PERF-R1-Q4_K_M-PC",
+        "PERF-R1-Q4_K_M-PA"
+      ]
+    },
+    {
+      "block_id": "PERF-R2-Q6_K",
+      "round": 2,
+      "block_index": 1,
+      "quant_key": "q6_k",
+      "prompt_order": [
+        "A",
+        "C",
+        "B"
+      ],
+      "run_ids": [
+        "PERF-R2-Q6_K-PA",
+        "PERF-R2-Q6_K-PC",
+        "PERF-R2-Q6_K-PB"
+      ]
+    },
+    {
+      "block_id": "PERF-R2-Q4_K_M",
+      "round": 2,
+      "block_index": 2,
+      "quant_key": "q4_k_m",
+      "prompt_order": [
+        "C",
+        "A",
+        "B"
+      ],
+      "run_ids": [
+        "PERF-R2-Q4_K_M-PC",
+        "PERF-R2-Q4_K_M-PA",
+        "PERF-R2-Q4_K_M-PB"
+      ]
+    },
+    {
+      "block_id": "PERF-R3-Q4_K_M",
+      "round": 3,
+      "block_index": 1,
+      "quant_key": "q4_k_m",
+      "prompt_order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "run_ids": [
+        "PERF-R3-Q4_K_M-PB",
+        "PERF-R3-Q4_K_M-PC",
+        "PERF-R3-Q4_K_M-PA"
+      ]
+    },
+    {
+      "block_id": "PERF-R3-Q6_K",
+      "round": 3,
+      "block_index": 2,
+      "quant_key": "q6_k",
+      "prompt_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "run_ids": [
+        "PERF-R3-Q6_K-PA",
+        "PERF-R3-Q6_K-PB",
+        "PERF-R3-Q6_K-PC"
+      ]
+    }
+  ],
+  "quality_schedule": [
+    {
+      "block_id": "QUALITY-Q4_K_M",
+      "block_index": 1,
+      "quant_key": "q4_k_m",
+      "task_order": [
+        "context_selection",
+        "escalation",
+        "privacy_overrides_code",
+        "constraint_extraction",
+        "route_fallback",
+        "dangerous_action_gate",
+        "route_long_context",
+        "route_private",
+        "route_code",
+        "dependency_order"
+      ],
+      "run_ids": [
+        "QUALITY-Q4_K_M-context_selection",
+        "QUALITY-Q4_K_M-escalation",
+        "QUALITY-Q4_K_M-privacy_overrides_code",
+        "QUALITY-Q4_K_M-constraint_extraction",
+        "QUALITY-Q4_K_M-route_fallback",
+        "QUALITY-Q4_K_M-dangerous_action_gate",
+        "QUALITY-Q4_K_M-route_long_context",
+        "QUALITY-Q4_K_M-route_private",
+        "QUALITY-Q4_K_M-route_code",
+        "QUALITY-Q4_K_M-dependency_order"
+      ]
+    },
+    {
+      "block_id": "QUALITY-Q6_K",
+      "block_index": 2,
+      "quant_key": "q6_k",
+      "task_order": [
+        "constraint_extraction",
+        "route_code",
+        "escalation",
+        "route_private",
+        "dangerous_action_gate",
+        "dependency_order",
+        "context_selection",
+        "route_fallback",
+        "privacy_overrides_code",
+        "route_long_context"
+      ],
+      "run_ids": [
+        "QUALITY-Q6_K-constraint_extraction",
+        "QUALITY-Q6_K-route_code",
+        "QUALITY-Q6_K-escalation",
+        "QUALITY-Q6_K-route_private",
+        "QUALITY-Q6_K-dangerous_action_gate",
+        "QUALITY-Q6_K-dependency_order",
+        "QUALITY-Q6_K-context_selection",
+        "QUALITY-Q6_K-route_fallback",
+        "QUALITY-Q6_K-privacy_overrides_code",
+        "QUALITY-Q6_K-route_long_context"
+      ]
+    }
+  ],
+  "planned_performance_runs": 18,
+  "planned_quality_runs": 20,
+  "model_default_config_path": "C:\\Users\\vinic\\.lmstudio\\.internal\\user-concrete-model-default-config\\qwen\\qwen3.5-9b.json",
+  "environment": {
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "lms_version": "CLI commit: 69d945a",
+    "git_commit": "894b4f09ae2768cec5197737ddf32d9271e3c2dd"
+  },
+  "fatal_error_at": "2026-09-27T19:28:59.907775-03:00",
+  "fatal_error": "Timeout após 240s executando:\n  lms load qwen/qwen3.5-9b@q6_k --gpu off --context-length 4096 --identifier localia-quant-bench-v1"
+}

@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-09-27T16:30:16.219274-03:00",
+  "passed": true,
+  "backend": "cpu",
+  "runtime_alias": "llama.cpp-win-x86_64-avx2@2.46.0",
+  "selected_runtime_line": "llama.cpp-win-x86_64-avx2@2.46.0                          ✓            GGUF",
+  "runtime_switch_seconds": 0.305722999968566,
+  "threads": 2,
+  "config_edit": {
+    "threadpool": {
+      "changed_occurrences": 1,
+      "before": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 2,
+          "style": "field-entry"
+        }
+      ],
+      "after": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 2,
+          "style": "field-entry"
+        }
+      ]
+    },
+    "reasoning_enable_thinking": {
+      "action": "added",
+      "before": [],
+      "after_value": false,
+      "key": "llm.prediction.reasoning.enableThinking",
+      "verified_after": [
+        {
+          "index": 0,
+          "key": "llm.prediction.reasoning.enableThinking",
+          "value": false
+        }
+      ]
+    }
+  },
+  "load_wall_time_seconds": 10.836871800012887,
+  "load_log_parsed": {
+    "log_available": true,
+    "threadpool_n_threads": 2,
+    "http_server_threads": 15,
+    "n_ctx": 4096,
+    "n_batch": 2048,
+    "n_ubatch": 512,
+    "flash_attn": "disabled",
+    "offloaded_layers": null,
+    "total_layers": null
+  },
+  "model_process": {
+    "pid": 71504,
+    "name": "llama-server.exe",
+    "rss_bytes": 9739358208,
+    "create_time": 1790537400.2099097,
+    "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 56409 --api-key LSMW-5Jd0fFZs_SZ6E1wxTJRMzVPXBpoclBFuOktoEs --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-OaoGdt\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 2 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+    "selection_score": 1790.7048416137695,
+    "candidate_count": 1,
+    "all_candidates": [
+      {
+        "score": 1790.7048416137695,
+        "pid": 71504,
+        "name": "llama-server.exe",
+        "rss_bytes": 9739358208,
+        "create_time": 1790537400.2099097,
+        "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 56409 --api-key LSMW-5Jd0fFZs_SZ6E1wxTJRMzVPXBpoclBFuOktoEs --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-OaoGdt\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 2 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+        "selection_score": 1790.7048416137695,
+        "candidate_count": 1
+      }
+    ]
+  },
+  "content": "OK",
+  "reasoning_content": null,
+  "thinking_problems": [],
+  "stop_reason": "eosFound",
+  "predicted_tokens_count": 2,
+  "wall_time_seconds": 2.0309857999673113,
+  "preflight_max_tokens": 96,
+  "lms_stdout": "\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 0% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 2% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 4% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 6% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 7% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 9% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 11% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 12% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 14% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 15% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 17% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 18% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 19% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 21% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 22% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 23% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 24% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 26% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 27% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 28% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 29% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 30% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 31% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 32% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 33% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 34% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 35% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 36% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 37% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 38% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 39% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 40% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 41% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 42% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 43% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 44% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 45% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 46% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 47% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 48% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 49% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 50% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 51% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 52% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 53% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 54% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 55% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 56% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 57% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 58% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 59% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠙\u001b[?25l\nLoading qwen/qwen3.5-9b 60% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠹\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠸\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠼\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠴\u001b[?25l\nLoading qwen/qwen3.5-9b 61% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠦\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠧\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠇\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠏\u001b[?25l\nLoading qwen/qwen3.5-9b 62% ⠋\u001b[?25l\nLoading qwen/qwen3.5-9b 100% ⠋\n\u001b[K\u001b[?25h",
+  "lms_stderr": "Model loaded successfully in 10.49s.\n(6.10 GiB)\nTo use the model in the API/SDK, use the identifier \"localia-screening-v4\"."
+}

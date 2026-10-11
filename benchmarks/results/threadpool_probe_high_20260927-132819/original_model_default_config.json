@@ -1,0 +1,38 @@
+{
+  "preset": "",
+  "operation": {
+    "fields": []
+  },
+  "load": {
+    "fields": [
+      {
+        "key": "llm.load.numParallelSessions",
+        "value": 1
+      },
+      {
+        "key": "llm.load.useUnifiedKvCache",
+        "value": false
+      },
+      {
+        "key": "llm.load.offloadKVCacheToGpu",
+        "value": false
+      },
+      {
+        "key": "llm.load.llama.flashAttention",
+        "value": false
+      },
+      {
+        "key": "llm.load.llama.acceleration.offloadRatio",
+        "value": 0
+      },
+      {
+        "key": "llm.load.contextLength",
+        "value": 4096
+      },
+      {
+        "key": "llm.load.llama.cpuThreadPoolSize",
+        "value": 2
+      }
+    ]
+  }
+}

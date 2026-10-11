@@ -1,0 +1,1 @@
+{"timestamp": "2026-09-27T12:24:33.429089-03:00", "block_id": "PREFLIGHT-1-VULKAN-T8", "backend": "vulkan", "runtime_alias": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0", "switch_wall_time_seconds": 0.32099230005405843, "selected_line": "llama.cpp-win-x86_64-vulkan-avx2@2.46.0                   ✓            GGUF"}

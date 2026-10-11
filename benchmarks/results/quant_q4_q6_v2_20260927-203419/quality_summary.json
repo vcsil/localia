@@ -1,0 +1,148 @@
+{
+  "generated_at": "2026-09-27T21:01:32.378222-03:00",
+  "successful_runs": 20,
+  "planned_runs": 20,
+  "by_quant": [
+    {
+      "quant_key": "q4_k_m",
+      "quant_display": "Q4_K_M",
+      "n": 10,
+      "json_valid_count": 10,
+      "exact_match_count": 9,
+      "field_score_mean": 0.95,
+      "task_results": {
+        "context_selection": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"selected\": [\"B\", \"D\"]}"
+        },
+        "escalation": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"escalate\":true,\"target\":\"claude\"}"
+        },
+        "privacy_overrides_code": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"local_fast\", \"approval_required\": false}"
+        },
+        "constraint_extraction": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"privacy\":\"local_only\",\"max_latency_ms\":2500,\"requires_code\":false,\"allowed_routes\":[\"local_fast\"]}"
+        },
+        "route_fallback": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"api_fallback\", \"approval_required\": false}"
+        },
+        "dangerous_action_gate": {
+          "json_valid": true,
+          "exact_match": false,
+          "field_score": 0.5,
+          "content": "{\"route\": \"api_fallback\", \"approval_required\": true}"
+        },
+        "route_long_context": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"claude\", \"approval_required\": false}"
+        },
+        "route_private": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"local_fast\", \"approval_required\": false}"
+        },
+        "route_code": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"codex\", \"approval_required\": false}"
+        },
+        "dependency_order": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"order\":[\"B\",\"D\",\"A\",\"C\"]}"
+        }
+      }
+    },
+    {
+      "quant_key": "q6_k",
+      "quant_display": "Q6_K",
+      "n": 10,
+      "json_valid_count": 10,
+      "exact_match_count": 9,
+      "field_score_mean": 0.95,
+      "task_results": {
+        "constraint_extraction": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"privacy\":\"local_only\",\"max_latency_ms\":2500,\"requires_code\":false,\"allowed_routes\":[\"local_fast\"]}"
+        },
+        "route_code": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"codex\", \"approval_required\": false}"
+        },
+        "escalation": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"escalate\":true,\"target\":\"claude\"}"
+        },
+        "route_private": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"local_fast\", \"approval_required\": false}"
+        },
+        "dangerous_action_gate": {
+          "json_valid": true,
+          "exact_match": false,
+          "field_score": 0.5,
+          "content": "{\"route\": \"api_fallback\", \"approval_required\": true}"
+        },
+        "dependency_order": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"order\":[\"B\",\"D\",\"A\",\"C\"]}"
+        },
+        "context_selection": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"selected\": [\"B\", \"D\"]}"
+        },
+        "route_fallback": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"api_fallback\", \"approval_required\": false}"
+        },
+        "privacy_overrides_code": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"local_fast\", \"approval_required\": false}"
+        },
+        "route_long_context": {
+          "json_valid": true,
+          "exact_match": true,
+          "field_score": 1.0,
+          "content": "{\"route\": \"claude\", \"approval_required\": false}"
+        }
+      }
+    }
+  ],
+  "note": "Suite pequena e objetiva, específica ao Jev; não é benchmark geral de inteligência."
+}

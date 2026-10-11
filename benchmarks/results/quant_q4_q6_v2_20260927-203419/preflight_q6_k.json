@@ -1,0 +1,1371 @@
+{
+  "timestamp": "2026-09-27T20:35:21.212755-03:00",
+  "passed": true,
+  "quant_key": "q6_k",
+  "quant_display": "Q6_K",
+  "variant": {
+    "type": "llm",
+    "modelKey": "qwen/qwen3.5-9b@q6_k",
+    "format": "gguf",
+    "displayName": "Qwen3.5 9B",
+    "publisher": "qwen",
+    "path": "qwen/qwen3.5-9b",
+    "sizeBytes": 8281142495,
+    "indexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q6_K.gguf",
+    "deviceIdentifier": null,
+    "paramsString": "9B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q6_K",
+      "bits": 6
+    },
+    "vision": true,
+    "trainedForToolUse": true,
+    "maxContextLength": 262144
+  },
+  "config_edit": {
+    "threadpool": {
+      "changed_occurrences": 1,
+      "before": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 2,
+          "style": "field-entry"
+        }
+      ],
+      "after": [
+        {
+          "path": "$.load.fields[6]",
+          "value": 8,
+          "style": "field-entry"
+        }
+      ]
+    },
+    "reasoning_enable_thinking": {
+      "action": "added",
+      "before": [],
+      "after_value": false,
+      "key": "llm.prediction.reasoning.enableThinking",
+      "verified_after": [
+        {
+          "index": 0,
+          "key": "llm.prediction.reasoning.enableThinking",
+          "value": false
+        }
+      ]
+    }
+  },
+  "load_record": {
+    "timestamp": "2026-09-27T20:35:19.670872-03:00",
+    "label": "PREFLIGHT-q6_k",
+    "quant_key": "q6_k",
+    "quant_display": "Q6_K",
+    "variant": {
+      "type": "llm",
+      "modelKey": "qwen/qwen3.5-9b@q6_k",
+      "format": "gguf",
+      "displayName": "Qwen3.5 9B",
+      "publisher": "qwen",
+      "path": "qwen/qwen3.5-9b",
+      "sizeBytes": 8281142495,
+      "indexedModelIdentifier": "qwen/qwen3.5-9b@lmstudio-community/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q6_K.gguf",
+      "deviceIdentifier": null,
+      "paramsString": "9B",
+      "architecture": "qwen35",
+      "quantization": {
+        "name": "Q6_K",
+        "bits": 6
+      },
+      "vision": true,
+      "trainedForToolUse": true,
+      "maxContextLength": 262144
+    },
+    "load_method": "python_sdk_direct_model_key",
+    "model_key_requested": "qwen/qwen3.5-9b@q6_k",
+    "instance_identifier": "localia-quant-v2-PREFLIGHT-q6_k",
+    "load_wall_time_seconds": 9.8203380999621,
+    "progress_events": [
+      {
+        "timestamp": "2026-09-27T20:35:08.696824-03:00",
+        "monotonic": 750285.9933376,
+        "raw_progress": 0.0,
+        "percent": 0.0
+      },
+      {
+        "timestamp": "2026-09-27T20:35:08.758501-03:00",
+        "monotonic": 750286.0549977,
+        "raw_progress": 0.01,
+        "percent": 1.0
+      },
+      {
+        "timestamp": "2026-09-27T20:35:08.829322-03:00",
+        "monotonic": 750286.1258188,
+        "raw_progress": 0.019801,
+        "percent": 1.9801
+      },
+      {
+        "timestamp": "2026-09-27T20:35:08.891130-03:00",
+        "monotonic": 750286.1876246,
+        "raw_progress": 0.02940890079601,
+        "percent": 2.940890079601
+      },
+      {
+        "timestamp": "2026-09-27T20:35:08.952893-03:00",
+        "monotonic": 750286.2493871,
+        "raw_progress": 0.03882937161455009,
+        "percent": 3.8829371614550094
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.019184-03:00",
+        "monotonic": 750286.3156811,
+        "raw_progress": 0.0480678613832589,
+        "percent": 4.80678613832589
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.083373-03:00",
+        "monotonic": 750286.3798714,
+        "raw_progress": 0.05712960934857333,
+        "percent": 5.712960934857333
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.146706-03:00",
+        "monotonic": 750286.4432021,
+        "raw_progress": 0.06601965508424507,
+        "percent": 6.601965508424507
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.208473-03:00",
+        "monotonic": 750286.5049702,
+        "raw_progress": 0.07474284793113459,
+        "percent": 7.474284793113458
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.273690-03:00",
+        "monotonic": 750286.5701893,
+        "raw_progress": 0.08330385590568047,
+        "percent": 8.330385590568048
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.337134-03:00",
+        "monotonic": 750286.6336294,
+        "raw_progress": 0.09170717411165441,
+        "percent": 9.170717411165441
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.400119-03:00",
+        "monotonic": 750286.6966151,
+        "raw_progress": 0.09995713268725677,
+        "percent": 9.995713268725677
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.462847-03:00",
+        "monotonic": 750286.7593455,
+        "raw_progress": 0.10805790431726221,
+        "percent": 10.805790431726221
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.526862-03:00",
+        "monotonic": 750286.8233636,
+        "raw_progress": 0.11601351133777134,
+        "percent": 11.601351133777134
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.589901-03:00",
+        "monotonic": 750286.8863981,
+        "raw_progress": 0.1238278324591451,
+        "percent": 12.38278324591451
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.649395-03:00",
+        "monotonic": 750286.9458894,
+        "raw_progress": 0.1315046091308775,
+        "percent": 13.15046091308775
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.712445-03:00",
+        "monotonic": 750287.0089427,
+        "raw_progress": 0.1390474515704866,
+        "percent": 13.904745157048659
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.781782-03:00",
+        "monotonic": 750287.0782942,
+        "raw_progress": 0.14645984447695934,
+        "percent": 14.645984447695934
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.844948-03:00",
+        "monotonic": 750287.1414575,
+        "raw_progress": 0.1537451524478623,
+        "percent": 15.37451524478623
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.907707-03:00",
+        "monotonic": 750287.2042137,
+        "raw_progress": 0.16090662511791723,
+        "percent": 16.090662511791724
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.970353-03:00",
+        "monotonic": 750287.2668631,
+        "raw_progress": 0.16794740203562727,
+        "percent": 16.79474020356273
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.032964-03:00",
+        "monotonic": 750287.329468,
+        "raw_progress": 0.17487051729341993,
+        "percent": 17.487051729341992
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.096785-03:00",
+        "monotonic": 750287.3932887,
+        "raw_progress": 0.1816789039257362,
+        "percent": 18.16789039257362
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.160317-03:00",
+        "monotonic": 750287.4568402,
+        "raw_progress": 0.18837539808853804,
+        "percent": 18.837539808853805
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.222815-03:00",
+        "monotonic": 750287.5193177,
+        "raw_progress": 0.19496274303281744,
+        "percent": 19.496274303281744
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.286401-03:00",
+        "monotonic": 750287.5829055,
+        "raw_progress": 0.2014435928838699,
+        "percent": 20.14435928838699
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.349887-03:00",
+        "monotonic": 750287.6463892,
+        "raw_progress": 0.20782051623733214,
+        "percent": 20.782051623733214
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.412639-03:00",
+        "monotonic": 750287.7091429,
+        "raw_progress": 0.214095999582277,
+        "percent": 21.4095999582277
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.475928-03:00",
+        "monotonic": 750287.7724266,
+        "raw_progress": 0.2202724505610028,
+        "percent": 22.02724505610028
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.539436-03:00",
+        "monotonic": 750287.8359358,
+        "raw_progress": 0.22635220107454426,
+        "percent": 22.635220107454426
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.603312-03:00",
+        "monotonic": 750287.8998114,
+        "raw_progress": 0.2323375102423663,
+        "percent": 23.23375102423663
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.666402-03:00",
+        "monotonic": 750287.9629219,
+        "raw_progress": 0.23823056722417518,
+        "percent": 23.82305672241752
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.729234-03:00",
+        "monotonic": 750288.0257369,
+        "raw_progress": 0.24403349391129123,
+        "percent": 24.403349391129122
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.792647-03:00",
+        "monotonic": 750288.08916,
+        "raw_progress": 0.24974834749457092,
+        "percent": 24.97483474945709
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.854227-03:00",
+        "monotonic": 750288.1507265,
+        "raw_progress": 0.2553771229154422,
+        "percent": 25.537712291544217
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.917599-03:00",
+        "monotonic": 750288.2140993,
+        "raw_progress": 0.260921755206219,
+        "percent": 26.0921755206219
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.980802-03:00",
+        "monotonic": 750288.2773124,
+        "raw_progress": 0.26638412172549353,
+        "percent": 26.63841217254935
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.043695-03:00",
+        "monotonic": 750288.3401962,
+        "raw_progress": 0.2717660442940583,
+        "percent": 27.17660442940583
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.107210-03:00",
+        "monotonic": 750288.403728,
+        "raw_progress": 0.27706929123648955,
+        "percent": 27.706929123648955
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.170637-03:00",
+        "monotonic": 750288.4671317,
+        "raw_progress": 0.28229557933322263,
+        "percent": 28.229557933322262
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.233412-03:00",
+        "monotonic": 750288.5299045,
+        "raw_progress": 0.287446575687669,
+        "percent": 28.7446575687669
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.297160-03:00",
+        "monotonic": 750288.5936583,
+        "raw_progress": 0.2925238995126613,
+        "percent": 29.252389951266128
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.361024-03:00",
+        "monotonic": 750288.6575194,
+        "raw_progress": 0.29752912384026897,
+        "percent": 29.752912384026896
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.424639-03:00",
+        "monotonic": 750288.7211337,
+        "raw_progress": 0.3024637771587952,
+        "percent": 30.246377715879518
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.488906-03:00",
+        "monotonic": 750288.7853998,
+        "raw_progress": 0.3073293449805509,
+        "percent": 30.73293449805509
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.553060-03:00",
+        "monotonic": 750288.8495547,
+        "raw_progress": 0.3121272713438017,
+        "percent": 31.21272713438017
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.617505-03:00",
+        "monotonic": 750288.9139994,
+        "raw_progress": 0.31685896025209087,
+        "percent": 31.685896025209086
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.681551-03:00",
+        "monotonic": 750288.9780476,
+        "raw_progress": 0.32152577705396945,
+        "percent": 32.15257770539694
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.746285-03:00",
+        "monotonic": 750289.0427815,
+        "raw_progress": 0.3261290497659916,
+        "percent": 32.61290497659916
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.811085-03:00",
+        "monotonic": 750289.1076027,
+        "raw_progress": 0.3306700703416845,
+        "percent": 33.06700703416845
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.873531-03:00",
+        "monotonic": 750289.1700557,
+        "raw_progress": 0.33515009588904854,
+        "percent": 33.51500958890485
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.938157-03:00",
+        "monotonic": 750289.2346645,
+        "raw_progress": 0.33957034983901196,
+        "percent": 33.957034983901195
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.002064-03:00",
+        "monotonic": 750289.2985627,
+        "raw_progress": 0.34393202306712956,
+        "percent": 34.39320230671296
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.065996-03:00",
+        "monotonic": 750289.36249,
+        "raw_progress": 0.3482362749706974,
+        "percent": 34.823627497069744
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.130695-03:00",
+        "monotonic": 750289.4272027,
+        "raw_progress": 0.35248423450333816,
+        "percent": 35.24842345033382
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.195514-03:00",
+        "monotonic": 750289.4920236,
+        "raw_progress": 0.35667700116900547,
+        "percent": 35.66770011690055
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.259094-03:00",
+        "monotonic": 750289.5555911,
+        "raw_progress": 0.3608156459772545,
+        "percent": 36.08156459772545
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.322666-03:00",
+        "monotonic": 750289.6191805,
+        "raw_progress": 0.3649012123615293,
+        "percent": 36.49012123615293
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.386078-03:00",
+        "monotonic": 750289.6825768,
+        "raw_progress": 0.3689347170621279,
+        "percent": 36.893471706212786
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.449758-03:00",
+        "monotonic": 750289.7462564,
+        "raw_progress": 0.37291715097542244,
+        "percent": 37.291715097542244
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.511967-03:00",
+        "monotonic": 750289.8084549,
+        "raw_progress": 0.3768494799708303,
+        "percent": 37.68494799708303
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.575532-03:00",
+        "monotonic": 750289.8720312,
+        "raw_progress": 0.3807326456769565,
+        "percent": 38.07326456769565
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.638924-03:00",
+        "monotonic": 750289.9354459,
+        "raw_progress": 0.38456756623825916,
+        "percent": 38.45675662382592
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.702536-03:00",
+        "monotonic": 750289.9990389,
+        "raw_progress": 0.3883551370435182,
+        "percent": 38.83551370435182
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.766776-03:00",
+        "monotonic": 750290.0632648,
+        "raw_progress": 0.39209623142732875,
+        "percent": 39.20962314273287
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.830624-03:00",
+        "monotonic": 750290.1271161,
+        "raw_progress": 0.3957917013457773,
+        "percent": 39.57917013457773
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.894478-03:00",
+        "monotonic": 750290.1909721,
+        "raw_progress": 0.3994423780274036,
+        "percent": 39.94423780274036
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.958427-03:00",
+        "monotonic": 750290.2549215,
+        "raw_progress": 0.4030490726004974,
+        "percent": 40.30490726004974
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.022728-03:00",
+        "monotonic": 750290.3192311,
+        "raw_progress": 0.40661257669772866,
+        "percent": 40.661257669772866
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.086812-03:00",
+        "monotonic": 750290.3833081,
+        "raw_progress": 0.41013366303906174,
+        "percent": 41.013366303906174
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.150434-03:00",
+        "monotonic": 750290.4469398,
+        "raw_progress": 0.41361308599385893,
+        "percent": 41.36130859938589
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.215052-03:00",
+        "monotonic": 750290.5115448,
+        "raw_progress": 0.4170515821230354,
+        "percent": 41.70515821230354
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.279566-03:00",
+        "monotonic": 750290.576056,
+        "raw_progress": 0.4204498707020879,
+        "percent": 42.04498707020879
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.345013-03:00",
+        "monotonic": 750290.6415098,
+        "raw_progress": 0.4238086542257802,
+        "percent": 42.38086542257802
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.407911-03:00",
+        "monotonic": 750290.7044176,
+        "raw_progress": 0.42712861889523124,
+        "percent": 42.712861889523126
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.472208-03:00",
+        "monotonic": 750290.7687126,
+        "raw_progress": 0.4304104350881201,
+        "percent": 43.04104350881201
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.536618-03:00",
+        "monotonic": 750290.8331126,
+        "raw_progress": 0.43365475781268514,
+        "percent": 43.365475781268515
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.600877-03:00",
+        "monotonic": 750290.8973729,
+        "raw_progress": 0.43686222714616724,
+        "percent": 43.686222714616726
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.665385-03:00",
+        "monotonic": 750290.9618824,
+        "raw_progress": 0.44003346865831505,
+        "percent": 44.0033468658315
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.729832-03:00",
+        "monotonic": 750291.0263263,
+        "raw_progress": 0.4431690938205434,
+        "percent": 44.31690938205434
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.793443-03:00",
+        "monotonic": 750291.0899443,
+        "raw_progress": 0.44626970040130975,
+        "percent": 44.62697004013098
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.857921-03:00",
+        "monotonic": 750291.1544159,
+        "raw_progress": 0.44933587284824633,
+        "percent": 44.93358728482463
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.922143-03:00",
+        "monotonic": 750291.2186394,
+        "raw_progress": 0.45236818265756434,
+        "percent": 45.23681826575643
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.985799-03:00",
+        "monotonic": 750291.2823109,
+        "raw_progress": 0.4553671887312221,
+        "percent": 45.53671887312221
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.049848-03:00",
+        "monotonic": 750291.3463385,
+        "raw_progress": 0.45833343772232743,
+        "percent": 45.833343772232745
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.115098-03:00",
+        "monotonic": 750291.4115967,
+        "raw_progress": 0.4612674643692246,
+        "percent": 46.12674643692246
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.179572-03:00",
+        "monotonic": 750291.4760665,
+        "raw_progress": 0.4641697918186962,
+        "percent": 46.41697918186962
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.242862-03:00",
+        "monotonic": 750291.5393572,
+        "raw_progress": 0.4670409319386924,
+        "percent": 46.70409319386924
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.306945-03:00",
+        "monotonic": 750291.6034416,
+        "raw_progress": 0.46988138562098014,
+        "percent": 46.988138562098015
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.372184-03:00",
+        "monotonic": 750291.6686787,
+        "raw_progress": 0.4726916430740915,
+        "percent": 47.26916430740915
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.435753-03:00",
+        "monotonic": 750291.7322502,
+        "raw_progress": 0.4754721841069305,
+        "percent": 47.54721841069305
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.499443-03:00",
+        "monotonic": 750291.7959376,
+        "raw_progress": 0.478223478403386,
+        "percent": 47.8223478403386
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.562954-03:00",
+        "monotonic": 750291.859461,
+        "raw_progress": 0.4809459857882806,
+        "percent": 48.09459857882806
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.626990-03:00",
+        "monotonic": 750291.9234854,
+        "raw_progress": 0.48364015648497366,
+        "percent": 48.364015648497364
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.691268-03:00",
+        "monotonic": 750291.9877691,
+        "raw_progress": 0.48630643136492224,
+        "percent": 48.630643136492225
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.755666-03:00",
+        "monotonic": 750292.0521727,
+        "raw_progress": 0.48894524218949265,
+        "percent": 48.894524218949265
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.819630-03:00",
+        "monotonic": 750292.1161389,
+        "raw_progress": 0.49155701184430023,
+        "percent": 49.15570118443002
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.884290-03:00",
+        "monotonic": 750292.1808,
+        "raw_progress": 0.4941421545663472,
+        "percent": 49.41421545663472
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.948933-03:00",
+        "monotonic": 750292.2454286,
+        "raw_progress": 0.496701076164215,
+        "percent": 49.6701076164215
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.013008-03:00",
+        "monotonic": 750292.3095145,
+        "raw_progress": 0.4992341742315575,
+        "percent": 49.923417423155755
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.077652-03:00",
+        "monotonic": 750292.3741475,
+        "raw_progress": 0.501741838354133,
+        "percent": 50.1741838354133
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.142223-03:00",
+        "monotonic": 750292.4387199,
+        "raw_progress": 0.5042244503106003,
+        "percent": 50.42244503106003
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.203995-03:00",
+        "monotonic": 750292.5005005,
+        "raw_progress": 0.5066823842672985,
+        "percent": 50.66823842672985
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.268798-03:00",
+        "monotonic": 750292.5652951,
+        "raw_progress": 0.5091160069672205,
+        "percent": 50.91160069672205
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.332770-03:00",
+        "monotonic": 750292.6292761,
+        "raw_progress": 0.5115256779133786,
+        "percent": 51.15256779133786
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.396029-03:00",
+        "monotonic": 750292.6925368,
+        "raw_progress": 0.5139117495467583,
+        "percent": 51.39117495467583
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.458613-03:00",
+        "monotonic": 750292.7551295,
+        "raw_progress": 0.5162745674190452,
+        "percent": 51.627456741904524
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.521958-03:00",
+        "monotonic": 750292.8184584,
+        "raw_progress": 0.5186144703603016,
+        "percent": 51.861447036030164
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.584329-03:00",
+        "monotonic": 750292.8808232,
+        "raw_progress": 0.5209317906417665,
+        "percent": 52.09317906417665
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.647365-03:00",
+        "monotonic": 750292.943861,
+        "raw_progress": 0.5232268541339435,
+        "percent": 52.32268541339435
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.710777-03:00",
+        "monotonic": 750293.0072723,
+        "raw_progress": 0.5254999804601337,
+        "percent": 52.54999804601337
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.773046-03:00",
+        "monotonic": 750293.0695395,
+        "raw_progress": 0.527751483145567,
+        "percent": 52.775148314556695
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.835855-03:00",
+        "monotonic": 750293.1323544,
+        "raw_progress": 0.5299816697622791,
+        "percent": 52.998166976227914
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.898005-03:00",
+        "monotonic": 750293.1944993,
+        "raw_progress": 0.5321908420698737,
+        "percent": 53.21908420698737
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.961074-03:00",
+        "monotonic": 750293.2575703,
+        "raw_progress": 0.5343792961523066,
+        "percent": 53.43792961523066
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.024328-03:00",
+        "monotonic": 750293.3208226,
+        "raw_progress": 0.5365473225508228,
+        "percent": 53.65473225508228
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.087330-03:00",
+        "monotonic": 750293.3838271,
+        "raw_progress": 0.5386952063931709,
+        "percent": 53.869520639317095
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.150218-03:00",
+        "monotonic": 750293.4467125,
+        "raw_progress": 0.5408232275192174,
+        "percent": 54.082322751921744
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.212919-03:00",
+        "monotonic": 750293.5094155,
+        "raw_progress": 0.5429316606030761,
+        "percent": 54.293166060307605
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.275982-03:00",
+        "monotonic": 750293.5724787,
+        "raw_progress": 0.5450207752718667,
+        "percent": 54.502077527186664
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.338779-03:00",
+        "monotonic": 750293.635274,
+        "raw_progress": 0.5470908362212088,
+        "percent": 54.70908362212088
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.401727-03:00",
+        "monotonic": 750293.6982296,
+        "raw_progress": 0.5491421033275568,
+        "percent": 54.91421033275567
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.464715-03:00",
+        "monotonic": 750293.7612118,
+        "raw_progress": 0.5511748317574758,
+        "percent": 55.11748317574758
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.527684-03:00",
+        "monotonic": 750293.8241825,
+        "raw_progress": 0.5531892720739551,
+        "percent": 55.318927207395504
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.589842-03:00",
+        "monotonic": 750293.8863365,
+        "raw_progress": 0.5551856703398531,
+        "percent": 55.51856703398531
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.652395-03:00",
+        "monotonic": 750293.9488941,
+        "raw_progress": 0.5571642682185631,
+        "percent": 55.71642682185632
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.715063-03:00",
+        "monotonic": 750294.0115598,
+        "raw_progress": 0.5591253030719872,
+        "percent": 55.912530307198715
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.777947-03:00",
+        "monotonic": 750294.0744434,
+        "raw_progress": 0.5610690080559008,
+        "percent": 56.10690080559008
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.840618-03:00",
+        "monotonic": 750294.1371124,
+        "raw_progress": 0.5629956122127912,
+        "percent": 56.29956122127911
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.903511-03:00",
+        "monotonic": 750294.2000067,
+        "raw_progress": 0.5649053405622438,
+        "percent": 56.490534056224384
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.966466-03:00",
+        "monotonic": 750294.2629805,
+        "raw_progress": 0.5667984141889564,
+        "percent": 56.679841418895634
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.029023-03:00",
+        "monotonic": 750294.3255205,
+        "raw_progress": 0.5686750503284485,
+        "percent": 56.867505032844846
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.093162-03:00",
+        "monotonic": 750294.3896783,
+        "raw_progress": 0.5705354624505401,
+        "percent": 57.05354624505401
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.155735-03:00",
+        "monotonic": 750294.4522535,
+        "raw_progress": 0.5723798603406659,
+        "percent": 57.23798603406659
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.219207-03:00",
+        "monotonic": 750294.5157356,
+        "raw_progress": 0.5742084501790885,
+        "percent": 57.42084501790885
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.282589-03:00",
+        "monotonic": 750294.5791064,
+        "raw_progress": 0.5760214346180775,
+        "percent": 57.602143461807756
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.345501-03:00",
+        "monotonic": 750294.6420084,
+        "raw_progress": 0.5778190128571107,
+        "percent": 57.781901285711065
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.408313-03:00",
+        "monotonic": 750294.7048124,
+        "raw_progress": 0.5796013807161601,
+        "percent": 57.96013807161601
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.463149-03:00",
+        "monotonic": 750294.7596459,
+        "raw_progress": 1.0,
+        "percent": 100.0
+      }
+    ],
+    "load_log_parsed": {
+      "log_available": true,
+      "threadpool_n_threads": 8,
+      "http_server_threads": 15,
+      "n_ctx": 4096,
+      "n_batch": 2048,
+      "n_ubatch": 512,
+      "flash_attn": "disabled",
+      "offloaded_layers": null,
+      "total_layers": null
+    },
+    "process": {
+      "pid": 66792,
+      "name": "llama-server.exe",
+      "rss_bytes": 8513966080,
+      "rss_gib": 7.929248809814453,
+      "cmdline": [
+        "C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+        "--model",
+        "C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q6_K.gguf",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "57242",
+        "--api-key",
+        "fwz7aDNKOJhOGB7xiAh3npiERke2qA3vfckliLj8nNg",
+        "--verbosity",
+        "5",
+        "--no-webui",
+        "--jinja",
+        "--chat-template-file",
+        "C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-BeWPD9\\chat-template.jinja",
+        "--ctx-size",
+        "4096",
+        "--n-gpu-layers",
+        "0",
+        "--n-cpu-moe",
+        "0",
+        "--main-gpu",
+        "0",
+        "--tensor-split",
+        "0",
+        "--split-mode",
+        "layer",
+        "--ctx-checkpoints",
+        "32",
+        "--batch-size",
+        "2048",
+        "--ubatch-size",
+        "512",
+        "--threads",
+        "8",
+        "--parallel",
+        "1",
+        "--cache-type-k",
+        "f16",
+        "--cache-type-v",
+        "f16",
+        "--mmproj",
+        "C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+        "--flash-attn",
+        "off",
+        "--no-kv-offload",
+        "--no-kv-unified",
+        "--load-mode",
+        "mmap+mlock"
+      ],
+      "exe": "C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+      "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q6_K.gguf --host 127.0.0.1 --port 57242 --api-key fwz7aDNKOJhOGB7xiAh3npiERke2qA3vfckliLj8nNg --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-BeWPD9\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 8 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock",
+      "selection_score": 1779.2924880981445,
+      "candidate_count": 1
+    },
+    "process_cli_audit": {
+      "threads": 8,
+      "gpu_layers": 0,
+      "context_length": 4096,
+      "model_path": "C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q6_K.gguf",
+      "quant_verified": true
+    },
+    "load_config_actual": {
+      "gpu": {
+        "ratio": 0.0,
+        "splitStrategy": "evenly",
+        "disabledGpus": []
+      },
+      "offloadKVCacheToGpu": false,
+      "contextLength": 4096,
+      "evalBatchSize": 2048,
+      "flashAttention": false,
+      "keepModelInMemory": true,
+      "tryMmap": true
+    },
+    "memory_during_load": {
+      "sample_count": 21,
+      "system_total_gib": 15.697277069091797,
+      "system_available_start_gib": 9.624427795410156,
+      "system_available_min_gib": 1.7652778625488281,
+      "system_available_mean_gib": 4.963017054966518,
+      "system_available_end_gib": 1.8352775573730469,
+      "system_used_percent_mean": 68.37619047619047,
+      "system_used_percent_peak": 88.8,
+      "swap_total_gib": 5.736907958984375,
+      "swap_used_start_gib": 0.7919120788574219,
+      "swap_used_peak_gib": 0.8653564453125,
+      "swap_used_end_gib": 0.865234375,
+      "swap_used_percent_peak": 15.1,
+      "process_rss_start_gib": 0.10486984252929688,
+      "process_rss_peak_gib": 7.929248809814453,
+      "process_rss_mean_gib": 4.330492401123047,
+      "process_rss_end_gib": 7.929248809814453,
+      "discovered_pid": 66792,
+      "monitor_errors": []
+    },
+    "memory_samples_during_load": [
+      {
+        "timestamp": "2026-09-27T20:35:08.671639-03:00",
+        "monotonic": 750285.9681555,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 10334150656,
+        "system_used_percent": 38.7,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": null,
+        "process_pid": null
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.180005-03:00",
+        "monotonic": 750286.4764992,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 10229661696,
+        "system_used_percent": 39.3,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 112603136,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:09.687705-03:00",
+        "monotonic": 750286.9842026,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 10226073600,
+        "system_used_percent": 39.3,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 112992256,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.193038-03:00",
+        "monotonic": 750287.489562,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 7464001536,
+        "system_used_percent": 55.7,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 113594368,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:10.700889-03:00",
+        "monotonic": 750287.9974034,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 5079089152,
+        "system_used_percent": 69.9,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 113623040,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.203793-03:00",
+        "monotonic": 750288.5002899,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 5853655040,
+        "system_used_percent": 65.3,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 113651712,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:11.714989-03:00",
+        "monotonic": 750289.0114793,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 9297260544,
+        "system_used_percent": 44.8,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 1010876416,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.228248-03:00",
+        "monotonic": 750289.5247436,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 8397832192,
+        "system_used_percent": 50.2,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 1830039552,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:12.736015-03:00",
+        "monotonic": 750290.0325074,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 7533608960,
+        "system_used_percent": 55.3,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 2694402048,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.248510-03:00",
+        "monotonic": 750290.5450101,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 6452322304,
+        "system_used_percent": 61.7,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 3770163200,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:13.762962-03:00",
+        "monotonic": 750291.0594623,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 5491322880,
+        "system_used_percent": 67.4,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 850309120,
+        "swap_used_percent": 13.8,
+        "process_rss_bytes": 4731207680,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.276372-03:00",
+        "monotonic": 750291.572873,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 4598501376,
+        "system_used_percent": 72.7,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 5738344448,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:14.788585-03:00",
+        "monotonic": 750292.085087,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 3634364416,
+        "system_used_percent": 78.4,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 6701727744,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.302738-03:00",
+        "monotonic": 750292.5992543,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 2769043456,
+        "system_used_percent": 83.6,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 7584829440,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:15.804991-03:00",
+        "monotonic": 750293.1014833,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 2538565632,
+        "system_used_percent": 84.9,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 7816654848,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.308360-03:00",
+        "monotonic": 750293.6048561,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 2276986880,
+        "system_used_percent": 86.5,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 8108425216,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:16.810343-03:00",
+        "monotonic": 750294.1068429,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 1999597568,
+        "system_used_percent": 88.1,
+        "swap_total_bytes": 6159958016,
+        "swap_used_bytes": 929169408,
+        "swap_used_percent": 15.1,
+        "process_rss_bytes": 8388206592,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.315401-03:00",
+        "monotonic": 750294.6119035,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 1895452672,
+        "system_used_percent": 88.8,
+        "swap_total_bytes": 9748508672,
+        "swap_used_bytes": 929038336,
+        "swap_used_percent": 9.5,
+        "process_rss_bytes": 8513376256,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:17.829383-03:00",
+        "monotonic": 750295.1259094,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 1898172416,
+        "system_used_percent": 88.7,
+        "swap_total_bytes": 9748508672,
+        "swap_used_bytes": 929038336,
+        "swap_used_percent": 9.5,
+        "process_rss_bytes": 8513966080,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:18.338928-03:00",
+        "monotonic": 750295.6354475,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 1968701440,
+        "system_used_percent": 88.3,
+        "swap_total_bytes": 9748508672,
+        "swap_used_bytes": 929038336,
+        "swap_used_percent": 9.5,
+        "process_rss_bytes": 8513966080,
+        "process_pid": 66792
+      },
+      {
+        "timestamp": "2026-09-27T20:35:18.483587-03:00",
+        "monotonic": 750295.7801157,
+        "system_total_bytes": 16854822912,
+        "system_available_bytes": 1970614272,
+        "system_used_percent": 88.3,
+        "swap_total_bytes": 9748508672,
+        "swap_used_bytes": 929038336,
+        "swap_used_percent": 9.5,
+        "process_rss_bytes": 8513966080,
+        "process_pid": 66792
+      }
+    ],
+    "memory_after_load": {
+      "timestamp": "2026-09-27T20:35:19.668963-03:00",
+      "monotonic": 750296.9654602,
+      "system_total_bytes": 16854822912,
+      "system_available_bytes": 2088722432,
+      "system_used_percent": 87.6,
+      "swap_total_bytes": 9748508672,
+      "swap_used_bytes": 929038336,
+      "swap_used_percent": 9.5,
+      "process_rss_bytes": 8513966080
+    },
+    "log_path": "C:\\Users\\vinic\\Downloads\\repos\\localia\\benchmarks\\results\\quant_q4_q6_v2_20260927-203419\\load_logs\\PREFLIGHT-q6_k-sdk.jsonl"
+  },
+  "process": {
+    "pid": 66792,
+    "name": "llama-server.exe",
+    "rss_bytes": 8513966080,
+    "rss_gib": 7.929248809814453,
+    "cmdline": [
+      "C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+      "--model",
+      "C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q6_K.gguf",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "57242",
+      "--api-key",
+      "fwz7aDNKOJhOGB7xiAh3npiERke2qA3vfckliLj8nNg",
+      "--verbosity",
+      "5",
+      "--no-webui",
+      "--jinja",
+      "--chat-template-file",
+      "C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-BeWPD9\\chat-template.jinja",
+      "--ctx-size",
+      "4096",
+      "--n-gpu-layers",
+      "0",
+      "--n-cpu-moe",
+      "0",
+      "--main-gpu",
+      "0",
+      "--tensor-split",
+      "0",
+      "--split-mode",
+      "layer",
+      "--ctx-checkpoints",
+      "32",
+      "--batch-size",
+      "2048",
+      "--ubatch-size",
+      "512",
+      "--threads",
+      "8",
+      "--parallel",
+      "1",
+      "--cache-type-k",
+      "f16",
+      "--cache-type-v",
+      "f16",
+      "--mmproj",
+      "C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf",
+      "--flash-attn",
+      "off",
+      "--no-kv-offload",
+      "--no-kv-unified",
+      "--load-mode",
+      "mmap+mlock"
+    ],
+    "exe": "C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe",
+    "text": "llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe C:\\Users\\vinic\\.lmstudio\\extensions\\backends\\llama.cpp-win-x86_64-avx2-2.46.0\\llama-server.exe --model C:\\Users\\vinic\\.lmstudio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q6_K.gguf --host 127.0.0.1 --port 57242 --api-key fwz7aDNKOJhOGB7xiAh3npiERke2qA3vfckliLj8nNg --verbosity 5 --no-webui --jinja --chat-template-file C:\\Users\\vinic\\.lmstudio\\.internal\\temp\\lmstudio-chat-template-BeWPD9\\chat-template.jinja --ctx-size 4096 --n-gpu-layers 0 --n-cpu-moe 0 --main-gpu 0 --tensor-split 0 --split-mode layer --ctx-checkpoints 32 --batch-size 2048 --ubatch-size 512 --threads 8 --parallel 1 --cache-type-k f16 --cache-type-v f16 --mmproj C:/Users/vinic/.lmstudio/models/lmstudio-community/Qwen3.5-9B-GGUF/mmproj-Qwen3.5-9B-BF16.gguf --flash-attn off --no-kv-offload --no-kv-unified --load-mode mmap+mlock",
+    "selection_score": 1779.2924880981445,
+    "candidate_count": 1
+  },
+  "content": "OK",
+  "reasoning_content": null,
+  "thinking_problems": [],
+  "stop_reason": "eosFound",
+  "predicted_tokens_count": 2,
+  "echoed_cpu_threads": 8,
+  "wall_time_seconds": 1.539740000036545
+}

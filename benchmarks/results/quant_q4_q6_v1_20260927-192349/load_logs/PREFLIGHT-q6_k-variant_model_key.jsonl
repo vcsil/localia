@@ -1,0 +1,3 @@
+Streaming logs from LM Studio
+
+{"timestamp":1790547897785,"data":{"type":"server.log","content":"[2026-09-27 19:24:57][INFO][LMSAuthenticator][Client=lms-cli][Endpoint=listDownloadedModels] Listing downloaded models","level":"info"}}
