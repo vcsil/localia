@@ -118,6 +118,33 @@ class CapabilityHardeningTests(unittest.TestCase):
         self.assertNotIn(Capability.REPOSITORY_EDIT, required)
         self.assertNotIn(Capability.REPOSITORY_READ, required)
 
+
+    def test_explicit_no_modify_removes_spurious_repository_edit(self):
+        required = self._refine(
+            "Analise os arquivos deste repositório e me explique a arquitetura, "
+            "sem modificar nada.",
+            "code_reasoning",
+            "repository_edit",
+            "repository_read",
+        )
+
+        self.assertIn(Capability.REPOSITORY_READ, required)
+        self.assertNotIn(Capability.REPOSITORY_EDIT, required)
+        self.assertNotIn(Capability.CODE_EXECUTION, required)
+
+    def test_project_implementation_recovers_repository_edit(self):
+        required = self._refine(
+            "Implemente uma nova função neste projeto e adicione testes "
+            "automatizados, depois rode a suíte.",
+            "code_execution",
+            "code_reasoning",
+            "repository_read",
+        )
+
+        self.assertIn(Capability.REPOSITORY_READ, required)
+        self.assertIn(Capability.REPOSITORY_EDIT, required)
+        self.assertIn(Capability.CODE_EXECUTION, required)
+
     def test_task_type_is_canonicalized_from_operational_capability(self):
         task_type = canonical_task_type(
             "classification",
