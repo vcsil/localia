@@ -30,3 +30,10 @@ tests/test_policy.py
 tests/test_registry.py
 tests/test_routing_eval.py
 tests/test_validator.py
+src/localia/execution/__init__.py
+src/localia/execution/contracts.py
+src/localia/execution/executors.py
+src/localia/execution/harness.py
+src/localia/execution/registry.py
+src/localia/execution/telemetry.py
+tests/test_execution.py
