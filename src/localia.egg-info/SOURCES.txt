@@ -5,6 +5,7 @@ src/localia.egg-info/PKG-INFO
 src/localia.egg-info/SOURCES.txt
 src/localia.egg-info/dependency_links.txt
 src/localia.egg-info/entry_points.txt
+src/localia.egg-info/requires.txt
 src/localia.egg-info/top_level.txt
 src/localia/jev/__init__.py
 src/localia/jev/contracts.py
@@ -13,5 +14,10 @@ src/localia/jev/policy.py
 src/localia/jev/registry.py
 src/localia/jev/semantic.py
 src/localia/jev/validator.py
+src/localia/providers/__init__.py
+src/localia/providers/lmstudio.py
+tests/test_lmstudio_backend.py
+tests/test_lmstudio_rest.py
+tests/test_lmstudio_semantic.py
 tests/test_orchestrator.py
 tests/test_policy.py

@@ -6,10 +6,11 @@ from typing import Any
 
 
 class DecisionType(str, Enum):
-    """Decision capabilities offered by Jev.
+    """Decision capabilities exposed by Jev.
 
-    V0 implements only ROUTE_TASK. Keeping the capability explicit prevents
-    Jev from being architecturally reduced to a model router forever.
+    V0 implements ROUTE_TASK only. The generic contract is intentional:
+    future capabilities can include SCREEN_ITEM, SELECT_CONTEXT, and
+    ESCALATE_TASK without redefining Jev as a model router.
     """
 
     ROUTE_TASK = "route_task"
@@ -36,7 +37,7 @@ class ActionRisk(str, Enum):
 
 @dataclass(frozen=True, slots=True)
 class JevRequest:
-    """Normalized request sent to the decision harness."""
+    """Normalized decision request sent to Jev."""
 
     task: str
     decision_type: DecisionType = DecisionType.ROUTE_TASK
@@ -72,15 +73,22 @@ class PolicyResult:
 
 @dataclass(frozen=True, slots=True)
 class RouteDecision:
-    """Candidate semantic decision; policy/validator remain authoritative."""
+    """Candidate semantic decision.
+
+    This object is NOT authoritative. Policy/validation may reject it.
+
+    confidence is deliberately optional. Until LocalIA has an empirically
+    calibrated confidence model, the LM Studio semantic router returns None
+    rather than presenting a model self-rating as a probability.
+    """
 
     route: Route
     task_type: str
-    confidence: float
+    confidence: float | None
     reason: str
 
     def __post_init__(self) -> None:
-        if not 0.0 <= self.confidence <= 1.0:
+        if self.confidence is not None and not 0.0 <= self.confidence <= 1.0:
             raise ValueError("confidence must be between 0 and 1")
         if not self.task_type.strip():
             raise ValueError("task_type cannot be empty")
@@ -95,7 +103,7 @@ class JevDecision:
     decision_type: DecisionType
     route: Route
     task_type: str
-    confidence: float
+    confidence: float | None
     reason: str
     approval_required: bool
     allowed_routes: tuple[Route, ...]
