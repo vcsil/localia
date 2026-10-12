@@ -446,6 +446,77 @@ class LMStudioRestBackend:
 
         return valid[0][1]
 
+    def _post_completion(
+        self,
+        payload: dict[str, Any],
+    ) -> Mapping[str, Any]:
+        endpoint = f"{self.base_url}/v1/chat/completions"
+        try:
+            return self._http_post(
+                endpoint,
+                payload,
+                self.timeout_seconds,
+            )
+        except LMStudioUnavailableError as exc:
+            if not _is_transient_engine_fetch_error(exc):
+                raise
+            return self._http_post(
+                endpoint,
+                payload,
+                self.timeout_seconds,
+            )
+
+    @staticmethod
+    def _extract_text_choice(response: Mapping[str, Any]) -> str:
+        choices = response.get("choices")
+        if not isinstance(choices, list) or len(choices) != 1:
+            raise LMStudioConfigurationError(
+                "Expected exactly one chat-completion choice."
+            )
+        choice = choices[0]
+        if not isinstance(choice, Mapping):
+            raise LMStudioConfigurationError(
+                "LM Studio chat-completion choice is malformed."
+            )
+        message = choice.get("message")
+        if not isinstance(message, Mapping):
+            raise LMStudioConfigurationError(
+                "LM Studio choice is missing message."
+            )
+        content = message.get("content")
+        if not isinstance(content, str):
+            raise LMStudioConfigurationError(
+                "LM Studio text completion is missing message.content."
+            )
+        return content.strip()
+
+    def respond_text(
+        self,
+        *,
+        system_prompt: str,
+        user_prompt: str,
+        config: Mapping[str, Any],
+    ) -> str:
+        self._ensure_audited()
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": float(config.get("temperature", 0.2)),
+            "max_tokens": int(config.get("maxTokens", 1024)),
+            "stream": False,
+            "seed": 0,
+        }
+        response = self._post_completion(payload)
+        self.last_metadata = {
+            "id": response.get("id"),
+            "model": response.get("model"),
+            "usage": response.get("usage"),
+        }
+        return self._extract_text_choice(response)
+
     def respond_structured(
         self,
         *,
@@ -476,21 +547,7 @@ class LMStudioRestBackend:
             "seed": 0,
         }
 
-        endpoint = f"{self.base_url}/v1/chat/completions"
-        try:
-            response = self._http_post(
-                endpoint,
-                payload,
-                self.timeout_seconds,
-            )
-        except LMStudioUnavailableError as exc:
-            if not _is_transient_engine_fetch_error(exc):
-                raise
-            response = self._http_post(
-                endpoint,
-                payload,
-                self.timeout_seconds,
-            )
+        response = self._post_completion(payload)
 
         self.last_metadata = {
             "id": response.get("id"),
