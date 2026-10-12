@@ -21,3 +21,5 @@ tests/test_lmstudio_rest.py
 tests/test_lmstudio_semantic.py
 tests/test_orchestrator.py
 tests/test_policy.py
+tests/test_registry.py
+tests/test_validator.py

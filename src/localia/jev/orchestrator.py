@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from .contracts import DecisionType, JevDecision, JevRequest, RouteDecision
+from .contracts import (
+    DecisionStatus,
+    DecisionType,
+    JevDecision,
+    JevRequest,
+)
 from .policy import PolicyEngine
 from .registry import RouteRegistry
 from .semantic import SemanticRouter, StubSemanticRouter
@@ -10,9 +15,13 @@ from .validator import DecisionValidator
 class Jev:
     """Generic decision harness.
 
-    Deterministic policy always runs first. If only one route remains, Jev
-    selects it without spending an LLM inference. Semantic routing is used
-    only when there is a real choice among two or more allowed routes.
+    Deterministic policy runs first. Semantic routing then identifies the
+    capabilities the task actually requires and proposes either a capable
+    allowed route or NO_SUITABLE_ROUTE. The validator is authoritative.
+
+    Important: a single allowed route is no longer auto-selected. Permission
+    and capability are different questions; the semantic layer must still
+    determine whether that one route can actually perform the task.
     """
 
     def __init__(
@@ -36,29 +45,29 @@ class Jev:
             )
 
         policy = self.policy_engine.evaluate(request, self.registry)
-        if not policy.allowed_routes:
-            raise RuntimeError(
-                "Jev cannot route this request: deterministic policy "
-                "left no allowed route"
-            )
 
-        if len(policy.allowed_routes) == 1:
-            only_route = next(iter(policy.allowed_routes))
-            candidate = RouteDecision(
-                route=only_route,
-                task_type="deterministic_single_route",
+        if not policy.allowed_routes:
+            return JevDecision(
+                decision_type=request.decision_type,
+                status=DecisionStatus.NO_SUITABLE_ROUTE,
+                route=None,
+                task_type="policy_blocked",
+                required_capabilities=(),
                 confidence=None,
                 reason=(
-                    "Only one route remains after deterministic policy; "
-                    "semantic routing was skipped."
+                    "No route remains after deterministic policy; semantic "
+                    "routing was skipped."
                 ),
+                approval_required=policy.approval_required,
+                allowed_routes=(),
+                policy_reasons=policy.reasons,
             )
-        else:
-            candidate = self.semantic_router.decide(
-                request,
-                policy,
-                self.registry,
-            )
+
+        candidate = self.semantic_router.decide(
+            request,
+            policy,
+            self.registry,
+        )
 
         self.validator.validate(
             request,
@@ -69,8 +78,15 @@ class Jev:
 
         return JevDecision(
             decision_type=request.decision_type,
+            status=candidate.status,
             route=candidate.route,
             task_type=candidate.task_type,
+            required_capabilities=tuple(
+                sorted(
+                    candidate.required_capabilities,
+                    key=lambda item: item.value,
+                )
+            ),
             confidence=candidate.confidence,
             reason=candidate.reason,
             approval_required=policy.approval_required,

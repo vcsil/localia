@@ -2,6 +2,8 @@
 
 from .contracts import (
     ActionRisk,
+    Capability,
+    DecisionStatus,
     DecisionType,
     JevDecision,
     JevRequest,
@@ -13,6 +15,8 @@ from .orchestrator import Jev
 
 __all__ = [
     "ActionRisk",
+    "Capability",
+    "DecisionStatus",
     "DecisionType",
     "Jev",
     "JevDecision",

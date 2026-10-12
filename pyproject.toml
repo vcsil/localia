@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "localia"
-version = "0.3.1"
-description = "LocalIA decision harness — Jev Core with LM Studio structured semantic router"
+version = "0.4.0"
+description = "LocalIA decision harness — capability-aware Jev routing"
 requires-python = ">=3.11"
 dependencies = [
     "lmstudio==1.5.0",

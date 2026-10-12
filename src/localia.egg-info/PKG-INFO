@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: localia
-Version: 0.3.1
-Summary: LocalIA decision harness — Jev Core with LM Studio structured semantic router
+Version: 0.4.0
+Summary: LocalIA decision harness — capability-aware Jev routing
 Requires-Python: >=3.11
 Requires-Dist: lmstudio==1.5.0

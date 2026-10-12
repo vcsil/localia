@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import replace
 from typing import Iterable
 
-from .contracts import Route, RouteSpec
+from .contracts import Capability, Route, RouteSpec
 
 
 DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
@@ -14,7 +14,14 @@ DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
         enabled=True,
         max_context_tokens=4096,
         capabilities=frozenset(
-            {"general", "classification", "extraction", "summarization", "structured_output"}
+            {
+                Capability.GENERAL,
+                Capability.CLASSIFICATION,
+                Capability.EXTRACTION,
+                Capability.SUMMARIZATION,
+                Capability.STRUCTURED_OUTPUT,
+                Capability.CODE_REASONING,
+            }
         ),
     ),
     RouteSpec(
@@ -23,7 +30,14 @@ DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
         local=True,
         enabled=False,
         max_context_tokens=None,
-        capabilities=frozenset({"general", "reasoning"}),
+        capabilities=frozenset(
+            {
+                Capability.GENERAL,
+                Capability.REASONING,
+                Capability.STRUCTURED_OUTPUT,
+                Capability.CODE_REASONING,
+            }
+        ),
     ),
     RouteSpec(
         route=Route.CODEX,
@@ -31,7 +45,14 @@ DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
         local=False,
         enabled=False,
         max_context_tokens=None,
-        capabilities=frozenset({"code", "repository"}),
+        capabilities=frozenset(
+            {
+                Capability.CODE_REASONING,
+                Capability.REPOSITORY_READ,
+                Capability.REPOSITORY_EDIT,
+                Capability.CODE_EXECUTION,
+            }
+        ),
     ),
     RouteSpec(
         route=Route.CLAUDE,
@@ -39,7 +60,16 @@ DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
         local=False,
         enabled=False,
         max_context_tokens=None,
-        capabilities=frozenset({"general", "long_context"}),
+        capabilities=frozenset(
+            {
+                Capability.GENERAL,
+                Capability.REASONING,
+                Capability.LONG_CONTEXT,
+                Capability.CODE_REASONING,
+                Capability.REPOSITORY_READ,
+                Capability.REPOSITORY_EDIT,
+            }
+        ),
     ),
     RouteSpec(
         route=Route.API_FALLBACK,
@@ -47,13 +77,20 @@ DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
         local=False,
         enabled=False,
         max_context_tokens=None,
-        capabilities=frozenset({"general"}),
+        capabilities=frozenset(
+            {
+                Capability.GENERAL,
+                Capability.REASONING,
+                Capability.STRUCTURED_OUTPUT,
+                Capability.CODE_REASONING,
+            }
+        ),
     ),
 )
 
 
 class RouteRegistry:
-    """Source of truth for route existence and runtime availability."""
+    """Source of truth for route existence, availability and capabilities."""
 
     def __init__(self, routes: Iterable[RouteSpec] = DEFAULT_ROUTES) -> None:
         items = tuple(routes)
@@ -75,3 +112,19 @@ class RouteRegistry:
 
     def set_enabled(self, route: Route, enabled: bool) -> None:
         self._routes[route] = replace(self.get(route), enabled=bool(enabled))
+
+    def suitable_routes(
+        self,
+        routes: frozenset[Route],
+        required_capabilities: frozenset[Capability],
+    ) -> tuple[Route, ...]:
+        return tuple(
+            sorted(
+                (
+                    route
+                    for route in routes
+                    if required_capabilities <= self.get(route).capabilities
+                ),
+                key=lambda item: item.value,
+            )
+        )

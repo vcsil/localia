@@ -1,6 +1,11 @@
 import unittest
 
-from localia.jev import JevRequest, Route
+from localia.jev import (
+    Capability,
+    DecisionStatus,
+    JevRequest,
+    Route,
+)
 from localia.jev.policy import PolicyEngine
 from localia.jev.registry import RouteRegistry
 from localia.jev.semantic import (
@@ -42,12 +47,17 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         policy = PolicyEngine().evaluate(request, registry)
         return request, policy, registry
 
-    def test_valid_structured_decision(self):
+    def test_valid_structured_routed_decision(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "codex",
-                "task_type": "code_edit",
+                "task_type": "code_repository_editing",
+                "required_capabilities": [
+                    "repository_read",
+                    "repository_edit",
+                ],
                 "reason": "Repository coding task.",
             }
         )
@@ -56,16 +66,46 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
             request, policy, registry
         )
 
+        self.assertEqual(decision.status, DecisionStatus.ROUTED)
         self.assertEqual(decision.route, Route.CODEX)
-        self.assertEqual(decision.task_type, "code_edit")
+        self.assertIn(
+            Capability.REPOSITORY_EDIT,
+            decision.required_capabilities,
+        )
         self.assertIsNone(decision.confidence)
 
-    def test_schema_enumerates_only_policy_allowed_routes(self):
+    def test_valid_no_suitable_route_decision(self):
+        registry = RouteRegistry()
+        request = JevRequest(task="Edite os arquivos deste repositório")
+        policy = PolicyEngine().evaluate(request, registry)
+        backend = FakeBackend(
+            {
+                "status": "no_suitable_route",
+                "route": "none",
+                "task_type": "repository_edit",
+                "required_capabilities": ["repository_edit"],
+                "reason": "No allowed route can edit repository files.",
+            }
+        )
+
+        decision = LMStudioSemanticRouter(backend).decide(
+            request, policy, registry
+        )
+
+        self.assertEqual(
+            decision.status,
+            DecisionStatus.NO_SUITABLE_ROUTE,
+        )
+        self.assertIsNone(decision.route)
+
+    def test_schema_enumerates_only_policy_routes_plus_none(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "local_fast",
                 "task_type": "general",
+                "required_capabilities": ["general"],
                 "reason": "Adequate local route.",
             }
         )
@@ -75,17 +115,60 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         enum_values = backend.calls[0]["response_format"]["properties"]["route"]["enum"]
         self.assertEqual(
             set(enum_values),
-            {route.value for route in policy.allowed_routes},
+            {route.value for route in policy.allowed_routes} | {"none"},
         )
         self.assertNotIn("api_fallback", enum_values)
         self.assertNotIn("local_heavy", enum_values)
+
+    def test_schema_capabilities_are_closed_enum(self):
+        request, policy, registry = self._policy_and_registry()
+        backend = FakeBackend(
+            {
+                "status": "routed",
+                "route": "local_fast",
+                "task_type": "general",
+                "required_capabilities": ["general"],
+                "reason": "Adequate local route.",
+            }
+        )
+
+        LMStudioSemanticRouter(backend).decide(request, policy, registry)
+
+        capability_enum = (
+            backend.calls[0]["response_format"]["properties"]
+            ["required_capabilities"]["items"]["enum"]
+        )
+        self.assertEqual(
+            set(capability_enum),
+            {item.value for item in Capability},
+        )
+
+    def test_route_catalog_exposes_typed_capabilities(self):
+        request, policy, registry = self._policy_and_registry()
+        backend = FakeBackend(
+            {
+                "status": "routed",
+                "route": "codex",
+                "task_type": "repository_edit",
+                "required_capabilities": ["repository_edit"],
+                "reason": "Repository task.",
+            }
+        )
+
+        LMStudioSemanticRouter(backend).decide(request, policy, registry)
+
+        user_prompt = backend.calls[0]["user_prompt"]
+        self.assertIn("repository_edit", user_prompt)
+        self.assertIn("code_execution", user_prompt)
 
     def test_prediction_profile_is_temperature_zero_cpu8(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "local_fast",
                 "task_type": "general",
+                "required_capabilities": ["general"],
                 "reason": "Adequate local route.",
             }
         )
@@ -101,8 +184,10 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "local_fast",
                 "task_type": "general",
+                "required_capabilities": ["general"],
                 "reason": "Adequate local route.",
             }
         )
@@ -120,9 +205,45 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         policy = PolicyEngine().evaluate(request, registry)
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "claude",
                 "task_type": "general",
+                "required_capabilities": ["general"],
                 "reason": "Attempted policy bypass.",
+            }
+        )
+
+        with self.assertRaises(SemanticRouterError):
+            LMStudioSemanticRouter(backend).decide(
+                request, policy, registry
+            )
+
+    def test_no_suitable_requires_none_route(self):
+        request, policy, registry = self._policy_and_registry()
+        backend = FakeBackend(
+            {
+                "status": "no_suitable_route",
+                "route": "codex",
+                "task_type": "repository_edit",
+                "required_capabilities": ["repository_edit"],
+                "reason": "Inconsistent output.",
+            }
+        )
+
+        with self.assertRaises(SemanticRouterError):
+            LMStudioSemanticRouter(backend).decide(
+                request, policy, registry
+            )
+
+    def test_unknown_capability_is_rejected(self):
+        request, policy, registry = self._policy_and_registry()
+        backend = FakeBackend(
+            {
+                "status": "routed",
+                "route": "codex",
+                "task_type": "magic",
+                "required_capabilities": ["telepathy"],
+                "reason": "Invalid capability.",
             }
         )
 
@@ -140,13 +261,14 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
                 request, policy, registry
             )
 
-
     def test_extra_fields_are_rejected(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             {
+                "status": "routed",
                 "route": "codex",
                 "task_type": "code_edit",
+                "required_capabilities": ["repository_edit"],
                 "reason": "Repository coding task.",
                 "approval_required": False,
             }
@@ -156,7 +278,6 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
             LMStudioSemanticRouter(backend).decide(
                 request, policy, registry
             )
-
 
 
 if __name__ == "__main__":
