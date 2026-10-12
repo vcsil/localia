@@ -8,7 +8,6 @@ from localia.execution.contracts import ExecutorOutput
 from localia.jev import Capability, JevDecision, JevRequest, Route
 from localia.providers.lmstudio import (
     LMStudioRestBackend,
-    QWEN_ROUTER_API_IDENTIFIER,
 )
 
 
@@ -49,33 +48,15 @@ class LocalFastExecutor:
         if decision.route is not self.route:
             raise ValueError("LocalFastExecutor received a non-local_fast decision")
 
-        # The execution call intentionally does not reuse the router schema.
-        # It asks the model to perform the user's task and return plain text.
-        payload = {
-            "model": getattr(self.backend, "model", QWEN_ROUTER_API_IDENTIFIER),
-            "messages": [
-                {
-                    "role": "system",
-                    "content": (
-                        "You are LocalIA's local execution model. "
-                        "Perform the user's task directly. "
-                        "Do not discuss routing or internal capabilities."
-                    ),
-                },
-                {"role": "user", "content": request.task},
-            ],
-            "temperature": 0.2,
-            "max_tokens": 1024,
-            "stream": False,
-            "seed": 0,
-        }
-
         try:
-            self.backend._ensure_audited()
-            response = self.backend._http_post(
-                f"{self.backend.base_url}/v1/chat/completions",
-                payload,
-                self.backend.timeout_seconds,
+            content = self.backend.respond_text(
+                system_prompt=(
+                    "You are LocalIA's local execution model. "
+                    "Perform the user's task directly. "
+                    "Do not discuss routing or internal capabilities."
+                ),
+                user_prompt=request.task,
+                config={"temperature": 0.2, "maxTokens": 1024},
             )
         except Exception as exc:
             return ExecutorOutput(
@@ -83,29 +64,10 @@ class LocalFastExecutor:
                 error=f"{type(exc).__name__}: {exc}",
             )
 
-        choices = response.get("choices")
-        if not isinstance(choices, list) or not choices:
-            return ExecutorOutput(
-                success=False,
-                error="LM Studio returned no completion choices",
-            )
-
-        first = choices[0]
-        message = first.get("message") if isinstance(first, dict) else None
-        content = message.get("content") if isinstance(message, dict) else None
-        if not isinstance(content, str):
-            return ExecutorOutput(
-                success=False,
-                error="LM Studio completion is missing text content",
-            )
-
         return ExecutorOutput(
             success=True,
-            output=content.strip(),
-            metadata={
-                "model": response.get("model"),
-                "usage": response.get("usage"),
-            },
+            output=content,
+            metadata=dict(self.backend.last_metadata or {}),
         )
 
 
