@@ -297,6 +297,11 @@ class LMStudioBackend:
         }
 
 
+def _is_transient_engine_fetch_error(exc: Exception) -> bool:
+    message = str(exc).casefold()
+    return "engine protocol predict request failed: fetch failed" in message
+
+
 class LMStudioRestBackend:
     """Structured semantic inference through LM Studio's OpenAI-compatible API.
 
@@ -471,11 +476,21 @@ class LMStudioRestBackend:
             "seed": 0,
         }
 
-        response = self._http_post(
-            f"{self.base_url}/v1/chat/completions",
-            payload,
-            self.timeout_seconds,
-        )
+        endpoint = f"{self.base_url}/v1/chat/completions"
+        try:
+            response = self._http_post(
+                endpoint,
+                payload,
+                self.timeout_seconds,
+            )
+        except LMStudioUnavailableError as exc:
+            if not _is_transient_engine_fetch_error(exc):
+                raise
+            response = self._http_post(
+                endpoint,
+                payload,
+                self.timeout_seconds,
+            )
 
         self.last_metadata = {
             "id": response.get("id"),

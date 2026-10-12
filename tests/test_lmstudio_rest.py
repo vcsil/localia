@@ -3,6 +3,7 @@ import unittest
 from localia.providers.lmstudio import (
     LMStudioConfigurationError,
     LMStudioRestBackend,
+    LMStudioUnavailableError,
     QWEN_Q4_MODEL_KEY,
 )
 
@@ -25,6 +26,19 @@ class CapturePost:
         self.calls.append((url, payload, timeout_seconds))
         return self.response
 
+
+
+class SequencePost:
+    def __init__(self, *outcomes):
+        self.outcomes = list(outcomes)
+        self.calls = []
+
+    def __call__(self, url, payload, timeout_seconds):
+        self.calls.append((url, payload, timeout_seconds))
+        outcome = self.outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
 
 def completion_response(
     *,
@@ -117,6 +131,52 @@ class LMStudioStructuredRestBackendTests(unittest.TestCase):
             )
 
         self.assertEqual(auditor.calls, 1)
+
+
+    def test_retries_one_transient_engine_fetch_failure(self):
+        post = SequencePost(
+            LMStudioUnavailableError(
+                "LM Studio structured-routing request failed with HTTP 400: "
+                "Engine protocol predict request failed: fetch failed"
+            ),
+            completion_response(),
+        )
+        backend = LMStudioRestBackend(
+            auditor=FakeAuditor(),
+            http_post=post,
+        )
+
+        result = backend.respond_structured(
+            system_prompt="system",
+            user_prompt="user",
+            response_format={"type": "object"},
+            config={},
+        )
+
+        self.assertEqual(result["route"], "codex")
+        self.assertEqual(len(post.calls), 2)
+
+    def test_does_not_retry_other_unavailable_errors(self):
+        post = SequencePost(
+            LMStudioUnavailableError(
+                "LM Studio structured-routing request failed with HTTP 400: "
+                "schema rejected"
+            ),
+        )
+        backend = LMStudioRestBackend(
+            auditor=FakeAuditor(),
+            http_post=post,
+        )
+
+        with self.assertRaises(LMStudioUnavailableError):
+            backend.respond_structured(
+                system_prompt="system",
+                user_prompt="user",
+                response_format={"type": "object"},
+                config={},
+            )
+
+        self.assertEqual(len(post.calls), 1)
 
     def test_accepts_schema_json_from_content(self):
         backend = LMStudioRestBackend(
