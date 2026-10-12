@@ -178,7 +178,7 @@ class CodexExecutor:
             stderr=stderr.strip(),
             exit_code=completed.returncode,
             metadata={
-                "command": command,
+                "executable": self.executable,
                 "sandbox": self._sandbox(decision),
                 "cwd": str(self.cwd),
             },
