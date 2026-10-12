@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import shutil
 import subprocess
 from typing import Protocol
 
@@ -98,13 +99,18 @@ class CodexExecutor:
             return "workspace-write"
         return "read-only"
 
+    def _resolved_executable(self) -> str | None:
+        return shutil.which(self.executable)
+
     def _command(
         self,
         request: JevRequest,
         decision: JevDecision,
+        *,
+        executable: str | None = None,
     ) -> list[str]:
         return [
-            self.executable,
+            executable or self.executable,
             "exec",
             "--sandbox",
             self._sandbox(decision),
@@ -122,7 +128,19 @@ class CodexExecutor:
         if decision.route is not self.route:
             raise ValueError("CodexExecutor received a non-codex decision")
 
-        command = self._command(request, decision)
+        resolved_executable = self._resolved_executable()
+        if resolved_executable is None:
+            return ExecutorOutput(
+                success=False,
+                error="Codex CLI was not found on PATH.",
+                metadata={"executable": self.executable},
+            )
+
+        command = self._command(
+            request,
+            decision,
+            executable=resolved_executable,
+        )
         try:
             completed = subprocess.run(
                 command,
