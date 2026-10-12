@@ -36,7 +36,7 @@ EXTRACTION_PATTERNS = (
 )
 
 REPOSITORY_CONTEXT_PATTERN = re.compile(
-    r"\b(?:repositório|repositorio|repository|codebase)\b"
+    r"\b(?:repositório|repositorio|repository|codebase|projeto|project)\b"
 )
 REPOSITORY_READ_PATTERN = re.compile(
     r"\b(?:abra|analise|inspecione|procure|busque|leia|liste)\b"
@@ -44,7 +44,19 @@ REPOSITORY_READ_PATTERN = re.compile(
 REPOSITORY_EDIT_PATTERN = re.compile(
     r"\b(?:corrija|corrigir|ajuste|ajustar|edite|editar|modifique|modificar|"
     r"refatore|refatorar|implemente|implementar|renomeie|renomear|apague|"
-    r"exclua|remova)\b"
+    r"exclua|remova|adicione|adicionar)\b"
+)
+NEGATED_REPOSITORY_EDIT_PATTERNS = (
+    re.compile(
+        r"\bsem\s+(?:alterar|modificar|editar|mexer\s+em)"
+        r"(?:\s+(?:nada|arquivos?|o\s+código|o\s+codigo))?\b"
+    ),
+    re.compile(
+        r"\bnão\s+(?:altere|alterar|modifique|modificar|edite|editar|"
+        r"mexa|mexer)\b"
+    ),
+    re.compile(r"\bread[- ]only\b"),
+    re.compile(r"\bwithout\s+(?:changing|modifying|editing)\b"),
 )
 
 EXECUTION_PATTERNS = (
@@ -92,11 +104,30 @@ def _matches_any(text: str, patterns: Iterable[re.Pattern[str]]) -> bool:
     return any(pattern.search(text) is not None for pattern in patterns)
 
 
-def _has_positive_execution_request(text: str) -> bool:
+def _scrub_patterns(
+    text: str,
+    patterns: Iterable[re.Pattern[str]],
+) -> str:
     scrubbed = text
-    for pattern in NEGATED_EXECUTION_PATTERNS:
+    for pattern in patterns:
         scrubbed = pattern.sub(" ", scrubbed)
-    return _matches_any(scrubbed, EXECUTION_PATTERNS)
+    return scrubbed
+
+
+def _has_positive_execution_request(text: str) -> bool:
+    return _matches_any(
+        _scrub_patterns(text, NEGATED_EXECUTION_PATTERNS),
+        EXECUTION_PATTERNS,
+    )
+
+
+def _has_positive_repository_edit_request(text: str) -> bool:
+    return (
+        REPOSITORY_EDIT_PATTERN.search(
+            _scrub_patterns(text, NEGATED_REPOSITORY_EDIT_PATTERNS)
+        )
+        is not None
+    )
 
 
 def refine_required_capabilities(
@@ -120,11 +151,25 @@ def refine_required_capabilities(
     has_repository_context = REPOSITORY_CONTEXT_PATTERN.search(text) is not None
     if has_repository_context and REPOSITORY_READ_PATTERN.search(text):
         refined.add(Capability.REPOSITORY_READ)
-    if has_repository_context and REPOSITORY_EDIT_PATTERN.search(text):
-        refined.add(Capability.REPOSITORY_EDIT)
 
-    if _has_positive_execution_request(text):
+    has_negated_repository_edit = _matches_any(
+        text,
+        NEGATED_REPOSITORY_EDIT_PATTERNS,
+    )
+    has_positive_repository_edit = (
+        has_repository_context
+        and _has_positive_repository_edit_request(text)
+    )
+    if has_positive_repository_edit:
+        refined.add(Capability.REPOSITORY_EDIT)
+    elif has_negated_repository_edit:
+        refined.discard(Capability.REPOSITORY_EDIT)
+
+    has_positive_execution = _has_positive_execution_request(text)
+    if has_positive_execution:
         refined.add(Capability.CODE_EXECUTION)
+    elif _matches_any(text, NEGATED_EXECUTION_PATTERNS):
+        refined.discard(Capability.CODE_EXECUTION)
 
     # Chat-only code work remains reasoning, not repository/tool work.
     if (
