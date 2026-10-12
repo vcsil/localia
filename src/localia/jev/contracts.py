@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
+from typing import Any, Iterable
 
 
 class DecisionType(str, Enum):
@@ -25,12 +25,7 @@ class Route(str, Enum):
 
 
 class Capability(str, Enum):
-    """Operational abilities a route can actually provide.
-
-    Capabilities describe execution ability, not merely subject matter.
-    For example, a local model can reason about code without being able to
-    edit a repository or execute tests.
-    """
+    """Operational abilities a route can actually provide."""
 
     GENERAL = "general"
     CLASSIFICATION = "classification"
@@ -43,6 +38,37 @@ class Capability(str, Enum):
     CODE_EXECUTION = "code_execution"
     LONG_CONTEXT = "long_context"
     REASONING = "reasoning"
+
+
+# Deterministic semantic implications between operational capabilities.
+# Keep this deliberately small: implications must be true by definition, not
+# merely common in practice.
+CAPABILITY_IMPLICATIONS: dict[Capability, frozenset[Capability]] = {
+    Capability.REPOSITORY_EDIT: frozenset({Capability.REPOSITORY_READ}),
+}
+
+
+def normalize_capabilities(
+    capabilities: Iterable[Capability],
+) -> frozenset[Capability]:
+    """Return the transitive closure of deterministic capability implications."""
+
+    normalized = set(capabilities)
+    changed = True
+    while changed:
+        changed = False
+        for capability in tuple(normalized):
+            implied = CAPABILITY_IMPLICATIONS.get(capability, frozenset())
+            before = len(normalized)
+            normalized.update(implied)
+            if len(normalized) != before:
+                changed = True
+    return frozenset(normalized)
+
+
+def format_capabilities(capabilities: Iterable[Capability]) -> str:
+    values = sorted(item.value for item in capabilities)
+    return ", ".join(values) if values else "none"
 
 
 class PrivacyLevel(str, Enum):
@@ -84,6 +110,13 @@ class RouteSpec:
     max_context_tokens: int | None = None
     capabilities: frozenset[Capability] = frozenset()
 
+    def __post_init__(self) -> None:
+        object.__setattr__(
+            self,
+            "capabilities",
+            normalize_capabilities(self.capabilities),
+        )
+
 
 @dataclass(frozen=True, slots=True)
 class PolicyResult:
@@ -94,13 +127,7 @@ class PolicyResult:
 
 @dataclass(frozen=True, slots=True)
 class RouteDecision:
-    """Candidate semantic decision.
-
-    This object is not authoritative. The semantic model identifies the task
-    requirements and proposes either a route or NO_SUITABLE_ROUTE. The final
-    deterministic validator verifies that the proposal is internally
-    consistent with policy and route capabilities.
-    """
+    """Candidate semantic decision, later checked by deterministic validation."""
 
     status: DecisionStatus
     route: Route | None
@@ -110,6 +137,11 @@ class RouteDecision:
     reason: str
 
     def __post_init__(self) -> None:
+        object.__setattr__(
+            self,
+            "required_capabilities",
+            normalize_capabilities(self.required_capabilities),
+        )
         if self.status is DecisionStatus.ROUTED and self.route is None:
             raise ValueError("routed decisions require a route")
         if self.status is DecisionStatus.NO_SUITABLE_ROUTE and self.route is not None:

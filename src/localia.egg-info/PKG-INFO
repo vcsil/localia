@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: localia
-Version: 0.4.1
-Summary: LocalIA decision harness — capability-aware Jev router
+Version: 0.4.2
+Summary: LocalIA decision harness — hardened capability-aware Jev router
 Requires-Python: >=3.11
 Requires-Dist: lmstudio==1.5.0

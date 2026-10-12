@@ -3,7 +3,12 @@ from __future__ import annotations
 from dataclasses import replace
 from typing import Iterable
 
-from .contracts import Capability, Route, RouteSpec
+from .contracts import (
+    Capability,
+    Route,
+    RouteSpec,
+    normalize_capabilities,
+)
 
 
 DEFAULT_ROUTES: tuple[RouteSpec, ...] = (
@@ -118,12 +123,13 @@ class RouteRegistry:
         routes: frozenset[Route],
         required_capabilities: frozenset[Capability],
     ) -> tuple[Route, ...]:
+        required = normalize_capabilities(required_capabilities)
         return tuple(
             sorted(
                 (
                     route
                     for route in routes
-                    if required_capabilities <= self.get(route).capabilities
+                    if required <= self.get(route).capabilities
                 ),
                 key=lambda item: item.value,
             )

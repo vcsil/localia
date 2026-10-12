@@ -39,7 +39,6 @@ def payload(
     route,
     task_type="general",
     required_capabilities=None,
-    reason="routing test",
 ):
     return {
         "route": route,
@@ -49,7 +48,6 @@ def payload(
             if required_capabilities is not None
             else ["general"]
         ),
-        "reason": reason,
     }
 
 
@@ -62,7 +60,7 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         policy = PolicyEngine().evaluate(request, registry)
         return request, policy, registry
 
-    def test_schema_does_not_ask_model_for_status(self):
+    def test_schema_does_not_ask_model_for_status_or_reason(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             payload(
@@ -76,7 +74,33 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
 
         schema = backend.calls[0]["response_format"]
         self.assertNotIn("status", schema["properties"])
+        self.assertNotIn("reason", schema["properties"])
         self.assertNotIn("status", schema["required"])
+        self.assertNotIn("reason", schema["required"])
+
+    def test_repository_edit_is_normalized_to_repository_read(self):
+        request, policy, registry = self._policy_and_registry()
+        backend = FakeBackend(
+            payload(
+                route="codex",
+                task_type="repository_edit",
+                required_capabilities=["repository_edit"],
+            )
+        )
+
+        decision = LMStudioSemanticRouter(backend).decide(
+            request, policy, registry
+        )
+
+        self.assertEqual(
+            decision.required_capabilities,
+            frozenset(
+                {
+                    Capability.REPOSITORY_EDIT,
+                    Capability.REPOSITORY_READ,
+                }
+            ),
+        )
 
     def test_single_suitable_route_is_resolved_deterministically(self):
         registry = RouteRegistry()
@@ -87,7 +111,6 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
                 route="none",
                 task_type="general_explanation",
                 required_capabilities=["general"],
-                reason="model incorrectly preferred none",
             )
         )
 
@@ -101,6 +124,12 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
             decision.required_capabilities,
             frozenset({Capability.GENERAL}),
         )
+        self.assertEqual(
+            decision.reason,
+            "Selected local_fast because it is the only policy-allowed route "
+            "that satisfies all required capabilities: general.",
+        )
+        self.assertNotIn("Model note", decision.reason)
 
     def test_single_capability_compatible_route_overrides_bad_preference(self):
         request, policy, registry = self._policy_and_registry()
@@ -109,7 +138,6 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
                 route="local_fast",
                 task_type="repository_edit",
                 required_capabilities=["repository_edit"],
-                reason="bad route preference",
             )
         )
 
@@ -129,7 +157,6 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
                 route="local_fast",
                 task_type="repository_edit",
                 required_capabilities=["repository_edit"],
-                reason="model tried local_fast",
             )
         )
 
@@ -142,6 +169,11 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
             DecisionStatus.NO_SUITABLE_ROUTE,
         )
         self.assertIsNone(decision.route)
+        self.assertEqual(
+            decision.reason,
+            "No policy-allowed route satisfies all required capabilities: "
+            "repository_edit, repository_read.",
+        )
 
     def test_multiple_suitable_routes_use_model_preference(self):
         registry = RouteRegistry()
@@ -161,6 +193,7 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         )
 
         self.assertEqual(decision.route, Route.LOCAL_FAST)
+        self.assertIn("[claude, local_fast]", decision.reason)
 
     def test_none_is_rejected_when_multiple_routes_are_suitable(self):
         registry = RouteRegistry()
@@ -200,7 +233,7 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         self.assertNotIn("api_fallback", enum_values)
         self.assertNotIn("local_heavy", enum_values)
 
-    def test_prediction_profile_is_temperature_zero_cpu8(self):
+    def test_prediction_profile_is_temperature_zero_cpu8_and_small_output(self):
         request, policy, registry = self._policy_and_registry()
         backend = FakeBackend(
             payload(
@@ -215,7 +248,7 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
         config = backend.calls[0]["config"]
         self.assertEqual(config["temperature"], 0.0)
         self.assertEqual(config["cpuThreads"], 8)
-        self.assertLessEqual(config["maxTokens"], 256)
+        self.assertLessEqual(config["maxTokens"], 128)
 
     def test_user_task_is_marked_untrusted(self):
         request, policy, registry = self._policy_and_registry()
@@ -252,7 +285,7 @@ class LMStudioSemanticRouterTests(unittest.TestCase):
                     task_type="repository_edit",
                     required_capabilities=["repository_edit"],
                 ),
-                "status": "routed",
+                "reason": "model prose should not be accepted",
             }
         )
 
