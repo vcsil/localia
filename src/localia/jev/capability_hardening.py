@@ -61,6 +61,8 @@ NEGATED_REPOSITORY_EDIT_PATTERNS = (
 
 EXECUTION_PATTERNS = (
     re.compile(r"\b(?:rode|rodar|execute|executar)\s+(?:os\s+)?testes\b"),
+    re.compile(r"\b(?:rode|rodar|execute|executar)\s+(?:a\s+)?suíte\b"),
+    re.compile(r"\b(?:rode|rodar|execute|executar)\s+(?:the\s+)?suite\b"),
     re.compile(r"\b(?:rode|rodar|execute|executar)\s+pytest\b"),
     re.compile(r"\brun\s+(?:the\s+)?tests?\b"),
     re.compile(r"\b(?:usando|via|com)\s+git\b"),
