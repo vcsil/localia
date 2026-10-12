@@ -1,2 +1,3 @@
 [console_scripts]
 localia = localia.cli:main
+localia-routing-eval = localia.evals.routing:main

@@ -7,6 +7,8 @@ src/localia.egg-info/dependency_links.txt
 src/localia.egg-info/entry_points.txt
 src/localia.egg-info/requires.txt
 src/localia.egg-info/top_level.txt
+src/localia/evals/__init__.py
+src/localia/evals/routing.py
 src/localia/jev/__init__.py
 src/localia/jev/contracts.py
 src/localia/jev/orchestrator.py
@@ -24,4 +26,5 @@ tests/test_lmstudio_semantic.py
 tests/test_orchestrator.py
 tests/test_policy.py
 tests/test_registry.py
+tests/test_routing_eval.py
 tests/test_validator.py
