@@ -1,0 +1,220 @@
+from __future__ import annotations
+
+from pathlib import Path
+import subprocess
+from typing import Protocol
+
+from localia.execution.contracts import ExecutorOutput
+from localia.jev import Capability, JevDecision, JevRequest, Route
+from localia.providers.lmstudio import (
+    LMStudioRestBackend,
+    QWEN_ROUTER_API_IDENTIFIER,
+)
+
+
+class ExecutorUnavailableError(RuntimeError):
+    """Raised when a configured execution backend is not available."""
+
+
+class Executor(Protocol):
+    route: Route
+    provider: str
+
+    def execute(
+        self,
+        request: JevRequest,
+        decision: JevDecision,
+    ) -> ExecutorOutput:
+        ...
+
+
+class LocalFastExecutor:
+    """Execute ordinary local tasks through LM Studio chat completions."""
+
+    route = Route.LOCAL_FAST
+    provider = "lmstudio:qwen3.5-9b-q4_k_m"
+
+    def __init__(
+        self,
+        *,
+        backend: LMStudioRestBackend | None = None,
+    ) -> None:
+        self.backend = backend or LMStudioRestBackend()
+
+    def execute(
+        self,
+        request: JevRequest,
+        decision: JevDecision,
+    ) -> ExecutorOutput:
+        if decision.route is not self.route:
+            raise ValueError("LocalFastExecutor received a non-local_fast decision")
+
+        # The execution call intentionally does not reuse the router schema.
+        # It asks the model to perform the user's task and return plain text.
+        payload = {
+            "model": getattr(self.backend, "model", QWEN_ROUTER_API_IDENTIFIER),
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are LocalIA's local execution model. "
+                        "Perform the user's task directly. "
+                        "Do not discuss routing or internal capabilities."
+                    ),
+                },
+                {"role": "user", "content": request.task},
+            ],
+            "temperature": 0.2,
+            "max_tokens": 1024,
+            "stream": False,
+            "seed": 0,
+        }
+
+        try:
+            self.backend._ensure_audited()
+            response = self.backend._http_post(
+                f"{self.backend.base_url}/v1/chat/completions",
+                payload,
+                self.backend.timeout_seconds,
+            )
+        except Exception as exc:
+            return ExecutorOutput(
+                success=False,
+                error=f"{type(exc).__name__}: {exc}",
+            )
+
+        choices = response.get("choices")
+        if not isinstance(choices, list) or not choices:
+            return ExecutorOutput(
+                success=False,
+                error="LM Studio returned no completion choices",
+            )
+
+        first = choices[0]
+        message = first.get("message") if isinstance(first, dict) else None
+        content = message.get("content") if isinstance(message, dict) else None
+        if not isinstance(content, str):
+            return ExecutorOutput(
+                success=False,
+                error="LM Studio completion is missing text content",
+            )
+
+        return ExecutorOutput(
+            success=True,
+            output=content.strip(),
+            metadata={
+                "model": response.get("model"),
+                "usage": response.get("usage"),
+            },
+        )
+
+
+class CodexExecutor:
+    """Execute repository/tool tasks through the Codex CLI."""
+
+    route = Route.CODEX
+    provider = "codex_cli"
+
+    def __init__(
+        self,
+        *,
+        executable: str = "codex",
+        cwd: str | Path | None = None,
+        timeout_seconds: float = 900.0,
+    ) -> None:
+        self.executable = executable
+        self.cwd = Path(cwd).resolve() if cwd is not None else Path.cwd()
+        self.timeout_seconds = timeout_seconds
+
+    @staticmethod
+    def _sandbox(decision: JevDecision) -> str:
+        capabilities = set(decision.required_capabilities)
+        if (
+            Capability.REPOSITORY_EDIT in capabilities
+            or Capability.CODE_EXECUTION in capabilities
+        ):
+            return "workspace-write"
+        return "read-only"
+
+    def _command(
+        self,
+        request: JevRequest,
+        decision: JevDecision,
+    ) -> list[str]:
+        return [
+            self.executable,
+            "exec",
+            "--sandbox",
+            self._sandbox(decision),
+            "--skip-git-repo-check",
+            request.task,
+        ]
+
+    def execute(
+        self,
+        request: JevRequest,
+        decision: JevDecision,
+    ) -> ExecutorOutput:
+        if decision.route is not self.route:
+            raise ValueError("CodexExecutor received a non-codex decision")
+
+        command = self._command(request, decision)
+        try:
+            completed = subprocess.run(
+                command,
+                cwd=self.cwd,
+                capture_output=True,
+                text=True,
+                timeout=self.timeout_seconds,
+                check=False,
+            )
+        except FileNotFoundError:
+            return ExecutorOutput(
+                success=False,
+                error=(
+                    f"Codex CLI executable {self.executable!r} was not found. "
+                    "Install/configure Codex CLI before enabling execution."
+                ),
+                metadata={"command": command},
+            )
+        except subprocess.TimeoutExpired as exc:
+            return ExecutorOutput(
+                success=False,
+                stdout="" if exc.stdout is None else str(exc.stdout),
+                error=f"Codex CLI timed out after {self.timeout_seconds:.0f}s",
+                metadata={"command": command},
+            )
+        except OSError as exc:
+            return ExecutorOutput(
+                success=False,
+                error=f"Could not start Codex CLI: {exc}",
+                metadata={"command": command},
+            )
+
+        stdout = completed.stdout or ""
+        stderr = completed.stderr or ""
+        if completed.returncode != 0:
+            return ExecutorOutput(
+                success=False,
+                output=stdout.strip(),
+                stderr=stderr.strip(),
+                exit_code=completed.returncode,
+                error=f"Codex CLI exited with code {completed.returncode}",
+                metadata={
+                    "command": command,
+                    "sandbox": self._sandbox(decision),
+                    "cwd": str(self.cwd),
+                },
+            )
+
+        return ExecutorOutput(
+            success=True,
+            output=stdout.strip(),
+            stderr=stderr.strip(),
+            exit_code=completed.returncode,
+            metadata={
+                "command": command,
+                "sandbox": self._sandbox(decision),
+                "cwd": str(self.cwd),
+            },
+        )
