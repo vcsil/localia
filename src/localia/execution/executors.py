@@ -139,7 +139,7 @@ class CodexExecutor:
                     f"Codex CLI executable {self.executable!r} was not found. "
                     "Install/configure Codex CLI before enabling execution."
                 ),
-                metadata={"command": command},
+                metadata={"executable": self.executable},
             )
         except subprocess.TimeoutExpired as exc:
             return ExecutorOutput(
@@ -147,13 +147,13 @@ class CodexExecutor:
                 output="" if exc.stdout is None else str(exc.stdout),
                 stderr="" if exc.stderr is None else str(exc.stderr),
                 error=f"Codex CLI timed out after {self.timeout_seconds:.0f}s",
-                metadata={"command": command},
+                metadata={"executable": self.executable},
             )
         except OSError as exc:
             return ExecutorOutput(
                 success=False,
                 error=f"Could not start Codex CLI: {exc}",
-                metadata={"command": command},
+                metadata={"executable": self.executable},
             )
 
         stdout = completed.stdout or ""
@@ -166,7 +166,7 @@ class CodexExecutor:
                 exit_code=completed.returncode,
                 error=f"Codex CLI exited with code {completed.returncode}",
                 metadata={
-                    "command": command,
+                    "executable": self.executable,
                     "sandbox": self._sandbox(decision),
                     "cwd": str(self.cwd),
                 },
