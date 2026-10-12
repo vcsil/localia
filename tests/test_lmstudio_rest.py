@@ -178,6 +178,32 @@ class LMStudioStructuredRestBackendTests(unittest.TestCase):
 
         self.assertEqual(len(post.calls), 1)
 
+    def test_respond_text_uses_plain_chat_completion(self):
+        auditor = FakeAuditor()
+        post = CapturePost(
+            completion_response(
+                content="plain answer",
+                reasoning_content=None,
+            )
+        )
+        backend = LMStudioRestBackend(
+            auditor=auditor,
+            http_post=post,
+        )
+
+        result = backend.respond_text(
+            system_prompt="system",
+            user_prompt="user",
+            config={"temperature": 0.2, "maxTokens": 64},
+        )
+
+        self.assertEqual(result, "plain answer")
+        self.assertEqual(auditor.calls, 1)
+        _, payload, _ = post.calls[0]
+        self.assertNotIn("response_format", payload)
+        self.assertEqual(payload["temperature"], 0.2)
+        self.assertEqual(payload["max_tokens"], 64)
+
     def test_accepts_schema_json_from_content(self):
         backend = LMStudioRestBackend(
             auditor=FakeAuditor(),
