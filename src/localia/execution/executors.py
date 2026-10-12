@@ -180,7 +180,8 @@ class CodexExecutor:
         except subprocess.TimeoutExpired as exc:
             return ExecutorOutput(
                 success=False,
-                stdout="" if exc.stdout is None else str(exc.stdout),
+                output="" if exc.stdout is None else str(exc.stdout),
+                stderr="" if exc.stderr is None else str(exc.stderr),
                 error=f"Codex CLI timed out after {self.timeout_seconds:.0f}s",
                 metadata={"command": command},
             )
