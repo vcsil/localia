@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-12T01:47:43.575719+00:00",
+  "router": "lmstudio",
+  "cases_file": "C:\\Users\\vinic\\Downloads\\repos\\localia\\evals\\routing_cases_v1.json",
+  "selected_cases": 10,
+  "repeat": 1,
+  "summary": {
+    "runs": 10,
+    "passed": 10,
+    "failed": 0,
+    "overall_accuracy": 1.0,
+    "errors": 0,
+    "policy_violations": 0,
+    "check_accuracy": {
+      "approval": 1.0,
+      "capabilities": 1.0,
+      "no_policy_violation": 1.0,
+      "route": 1.0,
+      "status": 1.0
+    },
+    "consistency_rate": 1.0,
+    "latency_seconds": {
+      "mean": 22.22019149994012,
+      "p50": 17.613034799927846,
+      "p95": 43.6443571849842,
+      "min": 16.2573539998848,
+      "max": 63.55679269996472
+    }
+  },
+  "records": [
+    {
+      "case_id": "general_01",
+      "category": "general",
+      "iteration": 1,
+      "task": "Explique cache L3 de forma simples.",
+      "latency_seconds": 63.55679269996472,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_02",
+      "category": "general",
+      "iteration": 1,
+      "task": "Explique de forma simples o que é fotossíntese.",
+      "latency_seconds": 17.445517299929634,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_03",
+      "category": "general",
+      "iteration": 1,
+      "task": "Qual é a diferença entre memória RAM e ROM?",
+      "latency_seconds": 16.2573539998848,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_04",
+      "category": "general",
+      "iteration": 1,
+      "task": "Explique como funciona o DNS para um iniciante.",
+      "latency_seconds": 17.351786499843,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_05",
+      "category": "general",
+      "iteration": 1,
+      "task": "Reescreva esta frase em tom mais formal: precisamos resolver isso logo.",
+      "latency_seconds": 18.116409600013867,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_06",
+      "category": "general",
+      "iteration": 1,
+      "task": "Traduza para inglês: Hoje o céu está limpo.",
+      "latency_seconds": 17.780552299926057,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "translation",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_07",
+      "category": "general",
+      "iteration": 1,
+      "task": "Dê cinco ideias de nomes para um aplicativo de estudos.",
+      "latency_seconds": 16.838813199894503,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "general_08",
+      "category": "general",
+      "iteration": 1,
+      "task": "Explique por que o céu parece azul durante o dia.",
+      "latency_seconds": 17.072840800043195,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "general",
+        "required_capabilities": [
+          "general"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: general.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "summary_01",
+      "category": "text_ops",
+      "iteration": 1,
+      "task": "Resuma em duas frases: A vacinação reduz a incidência de doenças infecciosas e protege também pessoas vulneráveis por meio da imunidade coletiva.",
+      "latency_seconds": 19.306936000008136,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "summarization",
+        "required_capabilities": [
+          "summarization"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: summarization.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "case_id": "summary_02",
+      "category": "text_ops",
+      "iteration": 1,
+      "task": "Resuma estes pontos: custo caiu 10%; vendas subiram 8%; margem permaneceu estável.",
+      "latency_seconds": 18.474912599893287,
+      "decision": {
+        "decision_type": "route_task",
+        "status": "routed",
+        "route": "local_fast",
+        "task_type": "summarization",
+        "required_capabilities": [
+          "summarization"
+        ],
+        "confidence": null,
+        "reason": "Selected local_fast because it is the only policy-allowed route that satisfies all required capabilities: summarization.",
+        "approval_required": false,
+        "allowed_routes": [
+          "codex",
+          "local_fast"
+        ],
+        "policy_reasons": []
+      },
+      "checks": {
+        "status": true,
+        "route": true,
+        "capabilities": true,
+        "approval": true,
+        "no_policy_violation": true
+      },
+      "passed": true,
+      "error": null
+    }
+  ]
+}
