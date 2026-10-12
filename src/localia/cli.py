@@ -4,9 +4,18 @@ import argparse
 import json
 import sys
 from dataclasses import asdict
+from pathlib import Path
 from enum import Enum
 from typing import Any
 
+from .execution import (
+    CodexExecutor,
+    ExecutionHarness,
+    ExecutionStatus,
+    ExecutorRegistry,
+    JsonlTelemetry,
+    LocalFastExecutor,
+)
 from .jev import ActionRisk, Jev, JevRequest, PrivacyLevel, Route
 from .jev.semantic import (
     LMStudioSemanticRouter,
@@ -73,6 +82,28 @@ def _build_parser() -> argparse.ArgumentParser:
         default=[],
         help="enable an additional route for this run; repeatable",
     )
+    parser.add_argument(
+        "--execute",
+        action="store_true",
+        help="execute the routed task instead of returning only the decision",
+    )
+    parser.add_argument(
+        "--approve",
+        action="store_true",
+        help="approve a destructive execution for this invocation",
+    )
+    parser.add_argument(
+        "--cwd",
+        type=Path,
+        default=Path.cwd(),
+        help="working directory for tool/repository executors",
+    )
+    parser.add_argument(
+        "--telemetry",
+        type=Path,
+        default=Path("data/runs.jsonl"),
+        help="JSONL telemetry path used with --execute",
+    )
     return parser
 
 
@@ -100,8 +131,10 @@ def main() -> int:
         )
         return 2
 
+    lmstudio_backend = None
     if args.router == "lmstudio":
-        semantic_router = LMStudioSemanticRouter(LMStudioRestBackend())
+        lmstudio_backend = LMStudioRestBackend()
+        semantic_router = LMStudioSemanticRouter(lmstudio_backend)
     else:
         semantic_router = StubSemanticRouter()
 
@@ -127,6 +160,47 @@ def main() -> int:
             else ActionRisk.NONE
         ),
     )
+
+    if args.approve and not args.execute:
+        print("error: --approve requires --execute", file=sys.stderr)
+        return 2
+
+    if args.execute:
+        execution_backend = lmstudio_backend or LMStudioRestBackend()
+        executors = ExecutorRegistry(
+            (
+                LocalFastExecutor(backend=execution_backend),
+                CodexExecutor(cwd=args.cwd),
+            )
+        )
+        harness = ExecutionHarness(
+            jev=jev,
+            executors=executors,
+            telemetry=JsonlTelemetry(args.telemetry),
+        )
+        try:
+            result = harness.run(request, approved=bool(args.approve))
+        except (LMStudioUnavailableError, LMStudioConfigurationError) as exc:
+            print(f"LM Studio router failed: {exc}", file=sys.stderr)
+            return 2
+        except (SemanticRouterError, DecisionValidationError) as exc:
+            print(f"Jev routing failed: {exc}", file=sys.stderr)
+            return 3
+
+        print(
+            json.dumps(
+                _jsonable(asdict(result)),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+        if result.status is ExecutionStatus.SUCCEEDED:
+            return 0
+        if result.status is ExecutionStatus.BLOCKED_APPROVAL:
+            return 4
+        if result.status is ExecutionStatus.NO_SUITABLE_ROUTE:
+            return 5
+        return 6
 
     try:
         decision = jev.decide(request)
