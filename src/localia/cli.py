@@ -8,7 +8,12 @@ from enum import Enum
 from typing import Any
 
 from .jev import ActionRisk, Jev, JevRequest, PrivacyLevel, Route
-from .jev.semantic import LMStudioSemanticRouter, StubSemanticRouter
+from .jev.semantic import (
+    LMStudioSemanticRouter,
+    SemanticRouterError,
+    StubSemanticRouter,
+)
+from .jev.validator import DecisionValidationError
 from .providers import (
     LMStudioBackend,
     LMStudioConfigurationError,
@@ -128,6 +133,9 @@ def main() -> int:
     except (LMStudioUnavailableError, LMStudioConfigurationError) as exc:
         print(f"LM Studio router failed: {exc}", file=sys.stderr)
         return 2
+    except (SemanticRouterError, DecisionValidationError) as exc:
+        print(f"Jev routing failed: {exc}", file=sys.stderr)
+        return 3
 
     payload = _jsonable(asdict(decision))
     print(json.dumps(payload, ensure_ascii=False, indent=2))
