@@ -10,6 +10,7 @@ src/localia.egg-info/top_level.txt
 src/localia/evals/__init__.py
 src/localia/evals/routing.py
 src/localia/jev/__init__.py
+src/localia/jev/capability_hardening.py
 src/localia/jev/contracts.py
 src/localia/jev/orchestrator.py
 src/localia/jev/policy.py
@@ -18,6 +19,7 @@ src/localia/jev/semantic.py
 src/localia/jev/validator.py
 src/localia/providers/__init__.py
 src/localia/providers/lmstudio.py
+tests/test_capability_hardening.py
 tests/test_capability_normalization.py
 tests/test_cli_errors.py
 tests/test_lmstudio_backend.py
