@@ -136,7 +136,6 @@ class CapabilityHardeningTests(unittest.TestCase):
         required = self._refine(
             "Implemente uma nova função neste projeto e adicione testes "
             "automatizados, depois rode a suíte.",
-            "code_execution",
             "code_reasoning",
             "repository_read",
         )
@@ -166,6 +165,56 @@ class CapabilityHardeningTests(unittest.TestCase):
 
         self.assertEqual(decision.status, DecisionStatus.ROUTED)
         self.assertEqual(decision.route, Route.LOCAL_FAST)
+
+
+    def test_read_only_repository_analysis_recovers_from_bad_model_edit(self):
+        decision = self._decide(
+            "Analise os arquivos deste repositório e me explique a arquitetura, "
+            "sem modificar nada.",
+            {
+                "route": "codex",
+                "task_type": "repository_edit",
+                "required_capabilities": [
+                    "code_reasoning",
+                    "repository_edit",
+                    "repository_read",
+                ],
+            },
+        )
+
+        self.assertEqual(decision.status, DecisionStatus.ROUTED)
+        self.assertEqual(decision.route, Route.CODEX)
+        self.assertEqual(decision.task_type, "repository_read")
+        self.assertNotIn(
+            Capability.REPOSITORY_EDIT,
+            decision.required_capabilities,
+        )
+
+    def test_project_implementation_recovers_edit_from_bad_model_output(self):
+        decision = self._decide(
+            "Implemente uma nova função neste projeto e adicione testes "
+            "automatizados, depois rode a suíte.",
+            {
+                "route": "codex",
+                "task_type": "code_execution",
+                "required_capabilities": [
+                    "code_reasoning",
+                    "repository_read",
+                ],
+            },
+        )
+
+        self.assertEqual(decision.status, DecisionStatus.ROUTED)
+        self.assertEqual(decision.route, Route.CODEX)
+        self.assertEqual(decision.task_type, "repository_edit")
+        self.assertIn(
+            Capability.REPOSITORY_EDIT,
+            decision.required_capabilities,
+        )
+        self.assertIn(
+            Capability.CODE_EXECUTION,
+            decision.required_capabilities,
+        )
 
     def test_long_context_regression_keeps_no_suitable_route(self):
         decision = self._decide(
