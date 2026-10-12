@@ -129,13 +129,6 @@ class CodexExecutor:
             raise ValueError("CodexExecutor received a non-codex decision")
 
         resolved_executable = self._resolved_executable()
-        if resolved_executable is None:
-            return ExecutorOutput(
-                success=False,
-                error="Codex CLI was not found on PATH.",
-                metadata={"executable": self.executable},
-            )
-
         command = self._command(
             request,
             decision,
