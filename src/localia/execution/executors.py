@@ -108,6 +108,8 @@ class CodexExecutor:
             "exec",
             "--sandbox",
             self._sandbox(decision),
+            "--ask-for-approval",
+            "never",
             "--skip-git-repo-check",
             request.task,
         ]
